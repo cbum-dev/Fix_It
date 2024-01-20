@@ -10,11 +10,15 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "appwrite": "^13.0.1",
     "axios": "^1.6.5",
     "bootstrap-icons": "^1.11.3",
+    "cors-anywhere": "^0.4.4",
+    "http-proxy-middleware": "^2.0.6",
     "react": "^18.2.0",
     "react-bootstrap-icons": "^1.10.3",
     "react-dom": "^18.2.0",
+    "react-feather": "^2.0.10",
     "react-router-dom": "^6.21.3"
   },
   "devDependencies": {
