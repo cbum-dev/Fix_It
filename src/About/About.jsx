@@ -50,6 +50,18 @@ const About = () => {
           open-source development accessible, rewarding, and impactful for
           everyone involved.
         </p>
+        <h1 className="text-xl text-blue-300 underline text-center mb-2 mt-2 md:text-3xl">
+          Latest GSoC Programs
+        </h1>
+        <p className="text-center md:text-lg">
+          Explore the latest Google Summer of Code (GSoC) programs. Find exciting projects and opportunities to contribute to open source while gaining valuable experience.
+        </p>
+        <h1 className="text-xl text-blue-300 underline text-center mb-2 mt-2 md:text-3xl">
+          Hacktoberfest Issues
+        </h1>
+        <p className="text-center md:text-lg">
+          Dive into the world of Hacktoberfest! Discover beginner-friendly issues and join the global open source celebration by making meaningful contributions to projects.
+        </p>
       </div>
     </div>
   );

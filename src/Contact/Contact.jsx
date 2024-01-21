@@ -12,7 +12,7 @@ import { faHashnode } from "@fortawesome/free-brands-svg-icons/faHashnode";
 
 const Contact = () => {
   return (
-    <div className="flex flex-col items-center justify-center">
+    <div className="text-white flex flex-col items-center justify-center">
       <h1 className="text-3xl my-4">Contact</h1>
       <ul className="flex flex-col justify-between space-x-4">
         <li></li>
