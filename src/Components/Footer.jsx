@@ -31,7 +31,7 @@ const Footer = () => {
       </div>
       <div className="flex items-center justify-center">
         <h1 className=" border-t-2 border-slate-600"></h1>
-        <h1>&copy; Copyright(2024)   _|_ Fix It </h1>
+        <h1>&copy; 2024 - Fix It </h1>
       </div>
     </footer>
   );

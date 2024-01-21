@@ -10,7 +10,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-gray-900 p-2.5 border-b-2 border-b-slate-400">
+    <nav className="bg-gray-900 p-2.5 border-b-2 border-b-slate-400 fixed top-0 w-full z-50">
       <div className="container mx-auto flex justify-between items-center">
         <Link to="/" className="text-white font-mono text-4xl font-bold">
           Fix It
@@ -37,6 +37,9 @@ const Navbar = () => {
           </Link>
           <Link to="/contact" className="text-white mx-4 hover:underline focus:underline">
             Contact
+          </Link>
+          <Link to="/login" className="text-white mx-4 hover:underline focus:underline">
+            Login
           </Link>
           {/* Add more links as needed */}
         </div>
