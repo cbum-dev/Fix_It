@@ -1,12 +1,16 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Menu, X } from "react-feather";
+import { ChevronDown, ChevronUp } from "react-feather";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
+  };
+
+  const closeMenu = () => {
+    setMenuOpen(false);
   };
 
   return (
@@ -16,13 +20,36 @@ const Navbar = () => {
           Fix It
         </Link>
 
-        <div className="md:hidden">
+
+        <div className="md:hidden ">
           <button onClick={toggleMenu} className="text-white">
-            {menuOpen ? <X size={24} /> : <Menu size={24} />}
+            {menuOpen ? <ChevronUp size={24} /> : <ChevronDown size={24} />}
           </button>
+
+          {menuOpen && (
+            <div className="absolute top-full left-0 mt-2 p-2 bg-gray-800 rounded-lg md:hidden">
+              <Link to="/" className="text-white block p-2 hover:underline" onClick={closeMenu}>
+                Home
+              </Link>
+              <Link to="/about" className="text-white block p-2 hover:underline" onClick={closeMenu}>
+                About
+              </Link>
+              <Link to="/issues" className="text-white block p-2 hover:underline" onClick={closeMenu}>
+                Issues
+              </Link>
+              <Link to="/programs" className="text-white block p-2 hover:underline" onClick={closeMenu}>
+                Programs
+              </Link>
+              <Link to="/contact" className="text-white block p-2 hover:underline" onClick={closeMenu}>
+                Contact
+              </Link>
+
+              {/* Add more links as needed */}
+            </div>
+          )}
         </div>
 
-        <div className={`flex flex-col md:flex md:flex-row  items-center ${menuOpen ? 'block' : 'hidden'}`}>
+        <div className={`hidden md:flex md:flex-row items-center`}>
           <Link to="/" className="text-white mx-4 hover:underline focus:underline">
             Home
           </Link>
@@ -38,10 +65,7 @@ const Navbar = () => {
           <Link to="/contact" className="text-white mx-4 hover:underline focus:underline">
             Contact
           </Link>
-          <Link to="/login" className="text-white mx-4 hover:underline focus:underline">
-            Login
-          </Link>
-          {/* Add more links as needed */}
+
         </div>
       </div>
     </nav>

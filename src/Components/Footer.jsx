@@ -15,7 +15,7 @@ const Footer = () => {
             Instagram
           </button>
           <button className="flex items-center bg-inherit text-white px-2 py-2 rounded-md ">
-            <Twitter className="mx-2" />
+            <Twitter  className="mx-2" />
             Twitter
           </button>
         </div>
@@ -23,10 +23,11 @@ const Footer = () => {
           <h1 className="text-white font-bold text-4xl w-full text-center ">Fix It</h1>
         </div>
         <div className="w-1/3 flex flex-col  justify-evenly">
-          <Link className="text-right" to="/home">Home</Link>
-          <Link className="text-right" to="/home">About</Link>
-          <Link className="text-right" to="/home">Donate</Link>
-          <Link className="text-right" to="/home">Contact</Link>
+          <Link className="text-right px-4" to="/">Home</Link>
+          <Link className="text-right px-4" to="/about">About</Link>
+          <Link className="text-right px-4" to="/issues">Issues</Link>
+          <Link className="text-right px-4" to="/programs">Programs</Link>
+          <Link className="text-right px-4" to="/contact">Contact</Link>
         </div>
       </div>
       <div className="flex items-center justify-center">

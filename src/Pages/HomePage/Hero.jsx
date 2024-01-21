@@ -39,7 +39,11 @@ const Hero = () => {
 
         <button className="flex bg-white text-black px-4 py-2 rounded-full mt-6 mb-6 border-2 border-slate-700 hover:bg-black hover:text-white">
           <StarFill className="mr-2 h-5 w-5 " />
-          <Link to="https://github.com/cbum-dev/">
+          <Link
+            target="_blank"
+            rel="noopener noreferrer"
+            to="https://github.com/cbum-dev/Fix_it"
+          >
             Stars Our Repository
           </Link>{" "}
         </button>

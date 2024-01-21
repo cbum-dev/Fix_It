@@ -37,28 +37,15 @@ const calculateTimeDifference = (createdDate) => {
   }
 };
 
-
-const fetchOrg = (org,setBio,setName) => {
-      fetch(`https://api.github.com/users/${org}`,{
-      headers:{
-
-        'Access-Control-Allow-Origin'      : '*',
-        'Access-Control-Allow-Methods'     : 'POST, GET, OPTIONS, PUT, DELETE',
-        'Access-Control-Allow-Credentials' : 'true',
-        'Access-Control-Max-Age'           : '86400',
-        'Access-Control-Allow-Headers'     : 'Content-Type, Authorization, X-Requested-With',
-        // 'Access-Control-Allow-Origin': '*',
-        'Content-Type': 'application/json',
-        Authorization : 'Token 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',
-      },
-      })
-          .then(response => response.json())
-          .then((data) => {
-            setBio(data.bio);
-            setName(data.login);
-          })
-          .catch(error => console.log(error));
-  };
+const fetchOrg = (org, setBio, setName) => {
+  fetch(`https://api.github.com/users/${org}`)
+    .then((response) => response.json())
+    .then((data) => {
+      setBio(data.bio);
+      setName(data.login);
+    })
+    .catch((error) => console.log(error));
+};
 const extractRepoName = (url) => {
   const parts = url.split("/");
   return parts[4];
@@ -74,18 +61,20 @@ const Issues = () => {
   const [selectedLabel, setSelectedLabel] = useState("good first issue");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [bio, setBio] = useState('');
-  const [name,setName] = useState('') // Define bio state here
+  const [bio, setBio] = useState("");
+  const [name, setName] = useState(""); // Define bio state here
   const handleSearch = (event) => {
-    if (event.key === "Enter" && searchTerm.trim() !== "") {
+    if (
+      event.key === "Enter" ||
+      (event.keyCode === 13 && searchTerm.trim() !== "")
+    ) {
       fetchData(searchTerm.trim());
     }
   };
 
   const handleLabelChange = (label) => {
     setSelectedLabel(label);
-    fetchData(searchTerm, label);    
-
+    fetchData(searchTerm, label);
   };
 
   const fetchData = (org, label = selectedLabel) => {
@@ -117,7 +106,7 @@ const Issues = () => {
   useEffect(() => {
     fetchData("appwrite");
   }, []);
-fetchOrg(searchTerm,setBio,setName);
+  fetchOrg(searchTerm, setBio, setName);
   return (
     <div className="flex flex-col justify-center items-center mx-2 my-4">
       <h1 className="text-3xl md:text-6xl lg:text-7xl text-white mt-6 mb-4">
@@ -125,7 +114,9 @@ fetchOrg(searchTerm,setBio,setName);
           ? "Good First Issues For You"
           : `Issues Labeled "${selectedLabel}"`}
       </h1>
-      <h1 className="text-xl text-white capitalize">{name} : {bio}</h1>
+      <h1 className="text-xl text-white capitalize">
+        {name} : {bio}
+      </h1>
       <div className="bg-inherit text-white">
         <div className="flex justify-center mt-4 m-6 text-black">
           <input
@@ -140,7 +131,6 @@ fetchOrg(searchTerm,setBio,setName);
         </div>
 
         <div className="flex justify-center m-6 text-black">
-    
           <select
             value={selectedLabel}
             onChange={(e) => handleLabelChange(e.target.value)}
@@ -158,9 +148,8 @@ fetchOrg(searchTerm,setBio,setName);
             <option value="functions">Functions</option>
           </select>
           {/* <button className="px-6 border-2 mx-2 bg-slate-300 rounded-lg ">Save</button> */}
-
         </div>
-        
+
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
           {loading ? (
             // Display loading skeletons while data is being fetched
