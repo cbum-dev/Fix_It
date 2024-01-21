@@ -11,9 +11,12 @@ const Programs = () => {
         const response = await axios.get(API_URL,
             {
             headers: {
-              'Access-Control-Allow-Origin': '*',
-              'Content-Type': 'application/json',
-              'Accept': 'application/json'
+              'Access-Control-Allow-Origin'      : '*',
+        'Access-Control-Allow-Methods'     : 'POST, GET, OPTIONS, PUT, DELETE',
+        'Access-Control-Allow-Credentials' : 'true',
+        'Access-Control-Max-Age'           : '86400',
+        'Access-Control-Allow-Headers'     : 'Content-Type, Authorization, X-Requested-With',
+        'Content-Type': 'application/json',
             }
           });
         setPrograms(response.data.items);

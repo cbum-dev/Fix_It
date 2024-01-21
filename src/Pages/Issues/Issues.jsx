@@ -39,7 +39,19 @@ const calculateTimeDifference = (createdDate) => {
 
 
 const fetchOrg = (org,setBio,setName) => {
-      fetch(`https://api.github.com/users/${org}`)
+      fetch(`https://api.github.com/users/${org}`,{
+      headers:{
+
+        'Access-Control-Allow-Origin'      : '*',
+        'Access-Control-Allow-Methods'     : 'POST, GET, OPTIONS, PUT, DELETE',
+        'Access-Control-Allow-Credentials' : 'true',
+        'Access-Control-Max-Age'           : '86400',
+        'Access-Control-Allow-Headers'     : 'Content-Type, Authorization, X-Requested-With',
+        // 'Access-Control-Allow-Origin': '*',
+        'Content-Type': 'application/json',
+        Authorization : 'Token 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',
+      },
+      })
           .then(response => response.json())
           .then((data) => {
             setBio(data.bio);
