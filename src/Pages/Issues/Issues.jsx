@@ -2,6 +2,16 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { StopCircle } from "react-bootstrap-icons";
 
+const debounce = (func, delay) => {
+  let timeoutId;
+  return function (...args) {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => {
+      func.apply(this, args);
+    }, delay);
+  };
+};
+
 const calculateTimeDifference = (createdDate) => {
   const currentDate = new Date();
   const issueDate = new Date(createdDate);
@@ -62,7 +72,8 @@ const Issues = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [bio, setBio] = useState("");
-  const [name, setName] = useState(""); // Define bio state here
+  const [name, setName] = useState(""); 
+  const debouncedFetchOrg = debounce(fetchOrg, 500);
   const handleSearch = (event) => {
     if (
       event.key === "Enter" ||
@@ -71,7 +82,14 @@ const Issues = () => {
       fetchData(searchTerm.trim());
     }
   };
-
+  const handleSearchDebounced = (event) => {
+    if (
+      event.key === "Enter" ||
+      (event.keyCode === 13 && searchTerm.trim() !== "")
+    ) {
+      debouncedFetchOrg(searchTerm.trim(), setBio, setName);
+    }
+  };
   const handleLabelChange = (label) => {
     setSelectedLabel(label);
     fetchData(searchTerm, label);
@@ -106,7 +124,15 @@ const Issues = () => {
   useEffect(() => {
     fetchData("appwrite");
   }, []);
-  fetchOrg(searchTerm, setBio, setName);
+  useEffect(() => {
+    // Use the debouncedFetchOrg function as the event handler
+    document.addEventListener("keydown", handleSearchDebounced);
+
+    // Cleanup the event listener
+    return () => {
+      document.removeEventListener("keydown", handleSearchDebounced);
+    };
+  }, [handleSearchDebounced]);
   return (
     <div className="flex flex-col justify-center items-center mx-2 my-4">
       <h1 className="text-3xl md:text-6xl lg:text-7xl text-white mt-6 mb-4">
