@@ -20,13 +20,13 @@ const Footer = () => {
           </button>
         </div>
         <div className="w-1/3 flex items-center justify-between">
-          <h1 className="text-white font-bold text-4xl">Fix It</h1>
+          <h1 className="text-white font-bold text-4xl w-full text-center ">Fix It</h1>
         </div>
-        <div className="w-1/3 flex flex-col justify-evenly">
-          <Link to="/home">Home</Link>
-          <Link to="/home">About</Link>
-          <Link to="/home">Donate</Link>
-          <Link to="/home">Contact</Link>
+        <div className="w-1/3 flex flex-col  justify-evenly">
+          <Link className="text-right" to="/home">Home</Link>
+          <Link className="text-right" to="/home">About</Link>
+          <Link className="text-right" to="/home">Donate</Link>
+          <Link className="text-right" to="/home">Contact</Link>
         </div>
       </div>
       <div className="flex items-center justify-center">
