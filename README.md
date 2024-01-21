@@ -1,9 +1,43 @@
-# React + Vite
+# Fix_It - GitHub Issue Aggregator
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Project Overview
 
-Currently, two official plugins are available:
+Fix_It is a React application built with Vite, providing a streamlined solution for managing GitHub issues. The application aggregates GitHub issues in one place, eliminating the need to navigate to GitHub each time you search for good first issues. With a clean and minimal setup, Fix_It leverages Vite for fast development, Hot Module Replacement (HMR), and two official plugins, [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react) for Fast Refresh using Babel, and [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) for Fast Refresh using SWC.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-# Fix_It
+## Installation Guide
+
+Follow these steps to set up and run Fix_It on your local machine:
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/your-username/fix-it.git
+   ```
+
+2. Navigate to the project directory:
+
+   ```bash
+   cd fix-it
+   ```
+
+3. Install dependencies:
+
+   ```bash
+   npm install
+   ```
+
+4. Run the development server:
+
+   ```bash
+   npm run dev
+   ```
+
+   This will start the application on `http://localhost:3000`.
+
+5. Open your web browser and visit `http://localhost:3000` to explore Fix_It.
+
+Now you have Fix_It up and running locally, providing a convenient hub for managing and exploring GitHub issues.
+
+Feel free to customize and enhance Fix_It based on your requirements or contribute to the project.
+
+Happy coding! 🚀
