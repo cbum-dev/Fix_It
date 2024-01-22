@@ -43,8 +43,6 @@ const Navbar = () => {
               <Link to="/contact" className="text-white block p-2 hover:underline" onClick={closeMenu}>
                 Contact
               </Link>
-
-              {/* Add more links as needed */}
             </div>
           )}
         </div>

@@ -125,10 +125,8 @@ const Issues = () => {
     fetchData("appwrite");
   }, []);
   useEffect(() => {
-    // Use the debouncedFetchOrg function as the event handler
     document.addEventListener("keydown", handleSearchDebounced);
 
-    // Cleanup the event listener
     return () => {
       document.removeEventListener("keydown", handleSearchDebounced);
     };
@@ -186,18 +184,15 @@ const Issues = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
           {loading ? (
-            // Display loading skeletons while data is being fetched
             Array.from({ length: 4 }).map((_, index) => (
               <LoadingSkeleton key={index} />
             ))
           ) : error ? (
-            // Display an error message if there is an error
             <div className="text-white text-center">
               <p>Error: {error}</p>
               <button onClick={() => fetchData(searchTerm)}>Retry</button>
             </div>
           ) : issues.length === 0 ? (
-            // Display a message and back button when no data is found
             <div className="text-white text-center">
               <p className="text-3xl text-center">Data Not Found</p>
               <button onClick={() => fetchData(searchTerm)}>Retry</button>

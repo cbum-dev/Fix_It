@@ -84,7 +84,6 @@ const Contact = () => {
             <FontAwesomeIcon icon={faHashnode} /> Hashnode : example    
           </a>
         </li>
-        {/* Add more contact methods here */}
       </ul>
     </div>
   );

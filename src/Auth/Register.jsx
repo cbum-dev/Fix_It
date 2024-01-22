@@ -7,7 +7,6 @@ const Registration = () => {
     const [confirmPassword, setConfirmPassword] = useState('');
 
     const handleRegistration = () => {
-        // Add your registration logic here
     };
 
     return (

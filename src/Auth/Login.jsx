@@ -5,7 +5,6 @@ const Login = () => {
     const [password, setPassword] = useState('');
 
     const handleLogin = () => {
-        // Add your login logic here
     };
 
     return (
