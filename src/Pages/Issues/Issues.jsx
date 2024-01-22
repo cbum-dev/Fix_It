@@ -206,8 +206,13 @@ const Issues = () => {
                       # {issue.number}
                     </h3>
                     <h3 className="flex">
-                      <StopCircle className="mr-2 h-6 w-5" />
-                      Open
+                      {" "}
+                      <p className="" style={{ color: Object.keys(issue.assignees).length === 0 ? 'green' : 'red' }} >
+                        {Object.keys(issue.assignees).length === 0
+                          ? "<Not Assigned>"
+                          : "<Assigned>"}
+                      </p>
+                      <p className="px-2">Open</p> <StopCircle className="mr-2 h-6 w-5" />
                     </h3>
                   </div>
 
