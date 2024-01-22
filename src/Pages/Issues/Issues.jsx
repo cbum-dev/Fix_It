@@ -72,7 +72,7 @@ const Issues = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [bio, setBio] = useState("");
-  const [name, setName] = useState(""); 
+  const [name, setName] = useState("");
   const debouncedFetchOrg = debounce(fetchOrg, 500);
   const handleSearch = (event) => {
     if (
@@ -138,10 +138,15 @@ const Issues = () => {
       <h1 className="text-3xl md:text-6xl lg:text-7xl text-white mt-6 mb-4">
         {selectedLabel === "good first issue"
           ? "Good First Issues For You"
+          : selectedLabel.toLowerCase() === "hacktoberfest"
+          ? "Hacktoberfest Issues For You"
           : `Issues Labeled "${selectedLabel}"`}
       </h1>
       <h1 className="text-xl text-white capitalize">
-        {name} : {bio}
+        {bio === ""
+          ? "appwrite : End to end backend server for frontend and mobile developers. 👩‍💻👨‍💻"
+          : `${name} : ${bio}`}
+        {/* {name} : {bio} */}
       </h1>
       <div className="bg-inherit text-white">
         <div className="flex justify-center mt-4 m-6 text-black">
@@ -163,6 +168,9 @@ const Issues = () => {
             className="px-4 w-11/12 py-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300 bg-slate-200"
           >
             <option value="good first issue">Good First Issue</option>
+            <option className="text-l text-gray-500" value="hacktoberfest">
+              Hacktober Fest
+            </option>
             <option value="bug">Bug</option>
             <option value="feature">Feature</option>
             <option value="documentation">Documentation</option>
@@ -196,7 +204,7 @@ const Issues = () => {
             </div>
           ) : (
             issues.map((issue) => (
-              <div key={issue.id} className="bg-gray-900 rounded-xl h-56 p-4">
+              <div key={issue.id} className="bg-gray-900 rounded-xl h-60 p-4">
                 <div className="h-3/5">
                   <div className="flex justify-between">
                     <h3 className="text-lg md:text-2xl font-sans mb-2">
@@ -219,7 +227,7 @@ const Issues = () => {
                     </p>
                   </div>
                   <div className="w-1/2 flex items-center justify-center">
-                    <p className="bg-slate-700 text-green-300 rounded-xl mb-2 w-full px-3 text-center">
+                    <p className="bg-slate-700 text-green-300 rounded-xl mb-2 w-full  text-center">
                       {extractRepoName(issue.html_url)}
                     </p>
                   </div>

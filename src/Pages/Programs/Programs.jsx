@@ -1496,7 +1496,7 @@ const Programs = () => {
 
   return (
     <div className="flex flex-col items-center">
-      <h1 className="text-3xl md:text-6xl lg:text-7xl mt-4 mb-4">
+      <h1 className="text-3xl text-white md:text-6xl lg:text-7xl mt-4 mb-4">
         GSOC Programs Of 2023
       </h1>
       <input
