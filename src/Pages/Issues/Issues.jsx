@@ -62,7 +62,40 @@ const extractRepoName = (url) => {
 };
 
 const LoadingSkeleton = () => {
-  return <div className=" bg-gray-900 rounded-xl w-96 h-56 animate-ping"></div>;
+  return (
+    <div className=" bg-gray-600 rounded-xl h-56 animate-pulse px-2 py-2">
+      <div className="h-3/5">
+        <div className="flex justify-between">
+          <h3 className="text-lg md:text-2xl font-sans mb-2"></h3>
+          <h3 className="flex">
+            {" "}
+            <p className="" style={{ color: "green" }}>
+              <StopCircle className="mr-2 h-6 w-5" />
+            </p>
+          </h3>
+        </div>
+
+        <p className="text-slate-200">
+        </p>
+      </div>
+      <div className="flex justify-between ">
+        <div className="w-1/2">
+          <p className="bg-slate-700 text-green-300 rounded-xl mb-2 w-3/4 px-3 text-center" style={{height:"24px",width:"70%"}}>
+          </p>
+        </div>
+        <div className="w-1/2 flex items-center justify-center">
+          <p className="bg-slate-700  rounded-xl mb-2 w-full  text-center" style={{height:"24px",width:"70%"}}>
+          </p>
+        </div>
+      </div>
+      <div className="flex justify-evenly mt-3 items-center">
+        <p className="rounded-xl mt-2 mb-2 w-1/2"></p>
+        <button className="border-0.5 bg-white rounded-xl animate-pul" style={{height:"36px",width:"108.333px"}}>
+          
+        </button>
+      </div>
+    </div>
+  );
 };
 
 const Issues = () => {
@@ -146,7 +179,7 @@ const Issues = () => {
           : `${name} : ${bio}`}
         {/* {name} : {bio} */}
       </h1>
-      <div className="bg-inherit text-white">
+      <div className="bg-inherit text-white w-full">
         <div className="flex justify-center mt-4 m-6 text-black">
           <input
             type="text"
@@ -207,12 +240,21 @@ const Issues = () => {
                     </h3>
                     <h3 className="flex">
                       {" "}
-                      <p className="" style={{ color: Object.keys(issue.assignees).length === 0 ? 'green' : 'red' }} >
+                      <p
+                        className=""
+                        style={{
+                          color:
+                            Object.keys(issue.assignees).length === 0
+                              ? "green"
+                              : "red",
+                        }}
+                      >
                         {Object.keys(issue.assignees).length === 0
                           ? "<Not Assigned>"
                           : "<Assigned>"}
                       </p>
-                      <p className="px-2">Open</p> <StopCircle className="mr-2 h-6 w-5" />
+                      <p className="px-2">Open</p>{" "}
+                      <StopCircle className="mr-2 h-6 w-5" />
                     </h3>
                   </div>
 
