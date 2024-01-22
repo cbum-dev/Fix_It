@@ -41,3 +41,5 @@ Now you have Fix_It up and running locally, providing a convenient hub for manag
 Feel free to customize and enhance Fix_It based on your requirements or contribute to the project.
 
 Happy coding! 🚀
+
+# Contribution and Improvements Are Appreciated
