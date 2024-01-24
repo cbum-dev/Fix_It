@@ -9,6 +9,7 @@ import Footer from "./Components/Footer.jsx";
 import Issues from "./Pages/Issues/Issues.jsx";
 import Programs from "./Pages/Programs/Programs.jsx";
 import About from "./About/About.jsx";
+import OrgRepo from "./Pages/Issues/RepoIssues.jsx";
 // import Login from "./Auth/Login.jsx";
 // import Registration from "./Auth/Register.jsx";
 ReactDOM.createRoot(document.getElementById("root")).render(
@@ -22,6 +23,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         <Route path="/programs" element={<Programs />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/about" element={<About />} />
+        <Route path="/issues/:org" element={<OrgRepo />} />
         {/* <Route path="/register" element={<Registration />} /> */}
       </Routes>
       <Footer />

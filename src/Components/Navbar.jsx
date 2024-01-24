@@ -15,32 +15,51 @@ const Navbar = () => {
 
   return (
     <nav className="bg-gray-900 p-2.5 border-b-2 border-b-slate-400 fixed top-0 w-full z-50">
-      <div className="container mx-auto flex justify-between items-center">
+      <div className="container mx-auto flex justify-between items-center relative">
         <Link to="/" className="text-white font-mono text-4xl font-bold">
           Fix It
         </Link>
 
-
-        <div className="md:hidden ">
+        <div className="flex md:hidden relative">
           <button onClick={toggleMenu} className="text-white">
             {menuOpen ? <ChevronUp size={24} /> : <ChevronDown size={24} />}
           </button>
 
           {menuOpen && (
-            <div className="absolute top-full left-0 mt-2 p-2 bg-gray-800 rounded-lg md:hidden">
-              <Link to="/" className="text-white block p-2 hover:underline" onClick={closeMenu}>
+            <div className="relative top-full left-0 mt-2 p-2 bg-gray-800 rounded-lg md:hidden z-10">
+              <Link
+                to="/"
+                className="text-white block p-2 hover:underline"
+                onClick={closeMenu}
+              >
                 Home
               </Link>
-              <Link to="/about" className="text-white block p-2 hover:underline" onClick={closeMenu}>
+              <Link
+                to="/about"
+                className="text-white block p-2 hover:underline"
+                onClick={closeMenu}
+              >
                 About
               </Link>
-              <Link to="/issues" className="text-white block p-2 hover:underline" onClick={closeMenu}>
+              <Link
+                to="/issues"
+                className="text-white block p-2 hover:underline"
+                onClick={closeMenu}
+              >
                 Issues
               </Link>
-              <Link to="/programs" className="text-white block p-2 hover:underline" onClick={closeMenu}>
+              <Link
+                to="/programs"
+                className="text-white block p-2 hover:underline"
+                onClick={closeMenu}
+              >
                 Programs
               </Link>
-              <Link to="/contact" className="text-white block p-2 hover:underline" onClick={closeMenu}>
+              <Link
+                to="/contact"
+                className="text-white block p-2 hover:underline"
+                onClick={closeMenu}
+              >
                 Contact
               </Link>
             </div>
@@ -48,22 +67,36 @@ const Navbar = () => {
         </div>
 
         <div className={`hidden md:flex md:flex-row items-center`}>
-          <Link to="/" className="text-white mx-4 hover:underline focus:underline">
+          <Link
+            to="/"
+            className="text-white mx-4 hover:underline focus:underline"
+          >
             Home
           </Link>
-          <Link to="/about" className="text-white mx-4 hover:underline focus:underline">
+          <Link
+            to="/about"
+            className="text-white mx-4 hover:underline focus:underline"
+          >
             About
           </Link>
-          <Link to="/issues" className="text-white mx-4 hover:underline focus:underline">
+          <Link
+            to="/issues"
+            className="text-white mx-4 hover:underline focus:underline"
+          >
             Issues
           </Link>
-          <Link to="/programs" className="text-white mx-4 hover:underline focus:underline">
+          <Link
+            to="/programs"
+            className="text-white mx-4 hover:underline focus:underline"
+          >
             Programs
           </Link>
-          <Link to="/contact" className="text-white mx-4 hover:underline focus:underline">
+          <Link
+            to="/contact"
+            className="text-white mx-4 hover:underline focus:underline"
+          >
             Contact
           </Link>
-
         </div>
       </div>
     </nav>

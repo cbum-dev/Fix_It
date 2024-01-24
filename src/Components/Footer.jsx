@@ -20,7 +20,7 @@ const Footer = () => {
           </button>
         </div>
         <div className="w-1/3 flex items-center justify-between">
-          <h1 className="text-white font-bold text-4xl w-full text-center ">Fix It</h1>
+          <img className="h-36 object-cover w-full" src="/public/Fix It-logos_white.png" alt="" />
         </div>
         <div className="w-1/3 flex flex-col  justify-evenly">
           <Link className="text-right px-4" to="/">Home</Link>

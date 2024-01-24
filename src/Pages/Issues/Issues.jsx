@@ -60,6 +60,21 @@ const extractRepoName = (url) => {
   const parts = url.split("/");
   return parts[4];
 };
+const Dropdown = ({ value, onChange, options }) => {
+  return (
+    <select
+      value={value}
+      onChange={(e) => onChange(e.target.value)}
+      className="px-4 w-11/12 py-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300 bg-slate-200"
+    >
+      {options.map((option) => (
+        <option key={option.value} value={option.value}>
+          {option.label}
+        </option>
+      ))}
+    </select>
+  );
+};
 
 const LoadingSkeleton = () => {
   return (
@@ -69,7 +84,7 @@ const LoadingSkeleton = () => {
           <h3 className="text-lg md:text-2xl font-sans mb-2"></h3>
           <h3 className="flex">
             {" "}
-            <p className="" style={{ color: "green" }}>
+            <p className="" style={{ color: "white" }}>
               <StopCircle className="mr-2 h-6 w-5" />
             </p>
           </h3>
@@ -210,14 +225,14 @@ const Issues = () => {
             <option value="cloud">Cloud</option>
             <option value="console">Console</option>
             <option value="docs">Docs</option>
-            <option value="functions">Functions</option>
+            <option value="funcselecttions">Functions</option>
           </select>
           {/* <button className="px-6 border-2 mx-2 bg-slate-300 rounded-lg ">Save</button> */}
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
           {loading ? (
-            Array.from({ length: 4 }).map((_, index) => (
+            Array.from({ length: 6 }).map((_, index) => (
               <LoadingSkeleton key={index} />
             ))
           ) : error ? (
