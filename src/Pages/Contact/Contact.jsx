@@ -14,7 +14,7 @@ const Contact = () => {
   
   return (
     <div className="text-white flex flex-col items-center justify-center">
-      <h1 className="text-3xl md:text-5xl my-4">Contact</h1>
+      <h1 className="text-3xl md:text-6xl lg:text-7xl my-4">Contact Us</ h1>
       <h1 className="md:text-2xl underline text-center text-blue-300 mt-2 mb-2">Contact Us: Contribute to Open Source with Fix It!</h1>
 
 <p className="md:text-xl text-center">Welcome to Fix It  your gateway to impactful contributions in the world of open-source development. At Fix It, we believe in the power of collaboration, and we invite you to be part of our vibrant community.</p>

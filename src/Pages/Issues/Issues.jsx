@@ -181,14 +181,14 @@ const Issues = () => {
   }, [handleSearchDebounced]);
   return (
     <div className="flex flex-col justify-center items-center mx-2 my-4">
-      <h1 className="text-3xl md:text-6xl lg:text-7xl text-white mt-6 mb-4">
+      <h1 className="text-3xl md:text-6xl lg:text-7xl text-white ">
         {selectedLabel === "good first issue"
           ? "Good First Issues For You"
           : selectedLabel.toLowerCase() === "hacktoberfest"
           ? "Hacktoberfest Issues For You"
           : `Issues Labeled "${selectedLabel}"`}
       </h1>
-      <h1 className="text-xl text-white capitalize">
+      <h1 className="text-xl my-2 text-white capitalize">
         {bio === ""
           ? "appwrite : End to end backend server for frontend and mobile developers. 👩‍💻👨‍💻"
           : `${name} : ${bio}`}

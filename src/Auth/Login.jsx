@@ -1,46 +1,78 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react'
+// import { useAuth } from '../utils/AuthContext'
+import { useAuth } from '../utils/AuthContext'
+import { useNavigate } from 'react-router'
+import { Link } from 'react-router-dom'
 
 const Login = () => {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const {user, handleUserLogin} = useAuth()
+    const [credentials, setCredentials] = useState({email:"", password:""})
 
-    const handleLogin = () => {
-    };
+    const navigate = useNavigate()
 
-    return (
-        <div className="flex items-center justify-center h-screen  w-screen">
-            <div className="bg-slate-900 p-8 h-2/5 rounded-xl shadow-md  w-3/4 md:w-1/2">
-                <h1 className="text-3xl md:text-5xl text-center mb-6 font-semibold text-gray-200">Login</h1>
-                <form>
-                    <div className="mb-4">
-                        <input
-                            className="bg-slate-300 w-full mt-6 p-3 border rounded-md focus:outline-none focus:border-blue-500"
-                            type="email"
-                            placeholder="Email"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                        />
-                    </div>
-                    <div className="mb-4">
-                        <input
-                            className="bg-slate-300 w-full mt-6 mb-6 p-3 border rounded-md focus:outline-none focus:border-blue-500"
-                            type="password"
-                            placeholder="Password"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                        />
-                    </div>
-                    <button
-                        className="w-full bg-blue-500 text-white p-3 rounded-md hover:bg-blue-900 hover:border-2 focus:outline-none"
-                        type="button"
-                        onClick={handleLogin}
-                    >
-                        Login
-                    </button>
-                </form>
-            </div>
-        </div>
-    );
-};
+    useEffect(() => {
+        if (user){
+            navigate('/')
+        }
+    }, [])
+
+    const handleInputChange = (e) => {
+      let name = e.target.name
+      let value = e.target.value 
+  
+      setCredentials({...credentials, [name]:value})
+      // console.log('CREDS:', credentials)
+    }
+
+  return (
+
+<div className=" bg-inherit">
+      <div >
+      <h1 className='text-4xl md:text-6xl lg:text-7xl text-center text-white my-4'>Login</h1>
+
+        <form onSubmit={(e) => handleUserLogin(e, credentials)} className=" my-6 bg-slate-900 px-4 py-6 rounded-3xl w-3/4 md:w-2/3 lg:w-1/2 mx-auto">
+          <div className="mb-4">
+            <label className="block text-gray-300 text-sm font-bold mb-2">Email:</label>
+            <input
+              type="email"
+              name="email"
+              placeholder="Enter your email..."
+              value={credentials.email}
+              onChange={(e) => handleInputChange(e)}
+              className="hover:animate-pulse appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              required
+            />
+          </div>
+
+          <div className="mb-4">
+            <label className="block text-gray-300 text-sm font-bold mb-2">Password:</label>
+            <input
+              type="password"
+              name="password"
+              placeholder="Enter password..."
+              value={credentials.password}
+              onChange={(e) => handleInputChange(e)}
+              className="hover:animate-pulse appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              required
+            />
+          </div>
+
+          <div className="mb-6">
+            <input
+              type="submit"
+              value="Login"
+              className="bg-blue-500 hover:bg-blue-700 text-white  py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            />
+          </div><p className='text-sm md:text-xl text-white'>
+          Don't have an account? Register <Link  className='text-blue-300' to="/register">here</Link>
+        </p>
+        </form>
+
+        
+      </div>
+    </div>
+
+  )
+}
 
 export default Login;

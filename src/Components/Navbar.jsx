@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { ChevronDown, ChevronUp } from "react-feather";
+import { useAuth } from "../utils/AuthContext";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const { user, handleLogout } = useAuth();
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
@@ -97,6 +99,22 @@ const Navbar = () => {
           >
             Contact
           </Link>
+          {user ? (
+            <button
+              className="text-white mx-4 hover:underline focus:underline"
+              onClick={handleLogout}
+            >
+              Logout
+            </button>
+          ) : (
+            <Link
+              to="/login"
+              className="text-white mx-4 hover:underline focus:underline"
+            >
+              Login
+            </Link>
+          )}
+          
         </div>
       </div>
     </nav>

@@ -3,7 +3,7 @@ import React from "react";
 const About = () => {
   return (
     <div className="flex flex-col items-center text-white px-2">
-      <h1 className="text-3xl mt-2 mb-4 md:text-5xl">About Us</h1>
+      <h1 className="text-3xl mt-2 mb-4  md:text-6xl lg:text-7xl">About Us</h1>
       <h1 className="text-5xl mb-4"> [Fix It]</h1>
       <h1 className="text-xl text-center md:text-3xl mb-4 font-mono">Why Search, When You Can Pull And Merge...</h1>
       <div className="border-b-2 border-b-slate-700 py-2 mb-2 border-t-2 border-t-slate-700">
