@@ -31,35 +31,35 @@ const Navbar = () => {
             <div className="relative top-full left-0 mt-2 p-2 bg-gray-800 rounded-lg md:hidden z-10">
               <Link
                 to="/"
-                className="text-white block p-2 hover:underline"
+                className="text-white block p-2 duration-500 focus:underline"
                 onClick={closeMenu}
               >
                 Home
               </Link>
               <Link
                 to="/about"
-                className="text-white block p-2 hover:underline"
+                className="text-white block p-2 focus:underline"
                 onClick={closeMenu}
               >
                 About
               </Link>
               <Link
                 to="/issues"
-                className="text-white block p-2 hover:underline"
+                className="text-white block p-2 focus:underline"
                 onClick={closeMenu}
               >
                 Issues
               </Link>
               <Link
                 to="/programs"
-                className="text-white block p-2 hover:underline"
+                className="text-white block p-2 focus:underline"
                 onClick={closeMenu}
               >
                 Programs
               </Link>
               <Link
                 to="/contact"
-                className="text-white block p-2 hover:underline"
+                className="text-white block p-2 focus:underline"
                 onClick={closeMenu}
               >
                 Contact
@@ -71,45 +71,45 @@ const Navbar = () => {
         <div className={`hidden md:flex md:flex-row items-center`}>
           <Link
             to="/"
-            className="text-white mx-4 hover:underline focus:underline"
+            className="text-white mx-4 hover:underline  hover:text-blue-300 duration-300"
           >
             Home
           </Link>
           <Link
             to="/about"
-            className="text-white mx-4 hover:underline focus:underline"
+            className="text-white mx-4 hover:underline hover:text-blue-300 duration-300"
           >
             About
           </Link>
           <Link
             to="/issues"
-            className="text-white mx-4 hover:underline focus:underline"
+            className="text-white mx-4 hover:underline hover:text-blue-300 duration-300"
           >
             Issues
           </Link>
           <Link
             to="/programs"
-            className="text-white mx-4 hover:underline focus:underline"
+            className="text-white mx-4 hover:underline hover:text-blue-300 duration-300"
           >
             Programs
           </Link>
           <Link
             to="/contact"
-            className="text-white mx-4 hover:underline focus:underline"
+            className="text-white mx-4 hover:underline hover:text-blue-300 duration-300 "
           >
             Contact
           </Link>
           {user ? (
             <button
-              className="text-white mx-4 hover:underline focus:underline"
+              className="text-white mx-4 hover:underline  hover:text-blue-300 duration-300"
               onClick={handleLogout}
             >
-              Logout
+              <Link to="/">Logout</Link>
             </button>
           ) : (
             <Link
               to="/login"
-              className="text-white mx-4 hover:underline focus:underline"
+              className="text-white mx-4 hover:underline hover:text-blue-300 duration-300"
             >
               Login
             </Link>

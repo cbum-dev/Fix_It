@@ -5,7 +5,7 @@ const Hero = () => {
   return (
     <div className="bg-gray-900 flex flex-col justify-center h-screen items-center text-white py-10">
       <h1 className="text-5xl md:text-7xl font-bold mb-4">Welcome to Fix it</h1>
-      <button className="mt-6 mb-6  flex gap-3 cursor-pointer text-white font-semibold bg-gradient-to-r from-gray-800 to-black px-7 py-3 rounded-full border border-gray-600 hover:scale-105 duration-200 hover:text-gray-300 hover:border-gray-800 hover:from-black hover:to-gray-900">
+      <button className="mt-6 mb-6  flex gap-3 cursor-pointer text-white font-semibold bg-gradient-to-r from-gray-800 to-black px-7 py-3 rounded-full border border-gray-600 hover:scale-105 duration-300 hover:text-gray-300 hover:border-gray-800 hover:from-black hover:to-gray-900">
         <svg
           viewBox="0 0 24 24"
           height="24"
@@ -32,12 +32,12 @@ const Hero = () => {
       </p>
 
       <div className="md:w-3/6 flex flex-col md:flex-row  md:justify-evenly mt-8">
-        <button className="flex  bg-white text-black px-4 py-2 rounded-full mt-6 mb-6 border-2 border-slate-700  hover:bg-black hover:text-white">
+        <button className="flex duration-300  bg-white text-black px-4 py-2 rounded-full mt-6 mb-6 border-2 border-slate-700  hover:bg-black hover:text-white">
           <StopCircle className="mr-2 h-5 w-5 " />
           <Link to="/issues">Issues</Link>
         </button>
 
-        <button className="flex bg-white text-black px-4 py-2 rounded-full mt-6 mb-6 border-2 border-slate-700 hover:bg-black hover:text-white">
+        <button className="flex bg-white duration-300 text-black px-4 py-2 rounded-full mt-6 mb-6 border-2 border-slate-700 hover:bg-black hover:text-white">
           <StarFill className="mr-2 h-5 w-5 " />
           <Link
             target="_blank"

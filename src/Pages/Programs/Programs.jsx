@@ -1423,7 +1423,7 @@ const projects = [
 const ProjectCard = ({ project }) => (
   <div className="w-full mx-auto text-center bg-slate-300 rounded-xl shadow-md overflow-hidden m-4 md:max-w-2xl">
     <img
-      className="bg-gray-600 object-contain py-2 object-center w-full h-20"
+      className="bg-gray-600 text-white text-xl md:text-4xl underline object-contain py-2 object-center w-full h-20"
       src={project.image_url}
       alt={project.name}
     />
@@ -1437,12 +1437,13 @@ const ProjectCard = ({ project }) => (
           </li>
         ))}
       </ul>
-      <div className="flex justify-evenly">
+      </div>
+      <div className="flex h-12 justify-evenly items-center bg-slate-600">
         <a
           href={project.url} // Replace placeholder URL with the actual project URL
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-4 block text-blue-500 hover:underline"
+          className=" block text-blue-400 font-semibold hover:text-white hover:underline"
         >
           Visit Website
         </a>
@@ -1453,12 +1454,12 @@ const ProjectCard = ({ project }) => (
             .join("")}`}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-4 block text-blue-500 hover:underline"
+          className="block text-blue-400 font-semibold hover:text-white hover:underline"
         >
           Visit Repository
         </a>
       </div>
-    </div>
+
   </div>
 );
 
@@ -1508,7 +1509,7 @@ const Programs = () => {
       />
       <button
         onClick={filterProjects}
-        className="m-4 bg-blue-500 text-white py-2 px-4 rounded-full"
+        className="m-4 bg-blue-500 text-white py-2 px-4 hover:bg-blue-900 rounded-full"
       >
         Search
       </button>
@@ -1516,7 +1517,7 @@ const Programs = () => {
       {visibleProjects.length < projects.length && (
         <button
           onClick={loadMore}
-          className="m-4 bg-blue-500 text-white py-2 px-4 rounded-full"
+          className="m-4 bg-blue-500 text-white py-2 px-4 hover:bg-blue-900 rounded-full"
         >
           Load More
         </button>

@@ -41,6 +41,7 @@ export const AuthProvider = ({children}) => {
     const handleLogout = async () => {
         const response = await account.deleteSession('current');
         setUser(null)
+        navigate('/')
     }
 
     const handleRegister = async (e, credentials) => {
@@ -85,7 +86,7 @@ export const AuthProvider = ({children}) => {
 
     return(
         <AuthContext.Provider value={contextData}>
-            {loading ? <p>Loading...</p> : children}
+            {loading ? <p className="text-white">Loading...</p> : children}
         </AuthContext.Provider>
     )
 }

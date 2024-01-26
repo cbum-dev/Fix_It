@@ -1,8 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { StopCircle } from "react-bootstrap-icons";
-
+import { StopCircle, SaveFill } from "react-bootstrap-icons";
+import client, {
+  databases,
+  DATABASE_ID,
+  COLLECTION_ID_SAVEDISSUE,
+} from "../../config";
+import { ID, Permission, Role } from "appwrite";
+import { useAuth } from "../../utils/AuthContext";
 const debounce = (func, delay) => {
+  // import client from "../../config";
+
   let timeoutId;
   return function (...args) {
     clearTimeout(timeoutId);
@@ -90,24 +98,28 @@ const LoadingSkeleton = () => {
           </h3>
         </div>
 
-        <p className="text-slate-200">
-        </p>
+        <p className="text-slate-200"></p>
       </div>
       <div className="flex justify-between ">
         <div className="w-1/2">
-          <p className="bg-slate-700 text-green-300 rounded-xl mb-2 w-3/4 px-3 text-center" style={{height:"24px",width:"70%"}}>
-          </p>
+          <p
+            className="bg-slate-700 text-green-300 rounded-xl mb-2 w-3/4 px-3 text-center"
+            style={{ height: "24px", width: "70%" }}
+          ></p>
         </div>
         <div className="w-1/2 flex items-center justify-center">
-          <p className="bg-slate-700  rounded-xl mb-2 w-full  text-center" style={{height:"24px",width:"70%"}}>
-          </p>
+          <p
+            className="bg-slate-700  rounded-xl mb-2 w-full  text-center"
+            style={{ height: "24px", width: "70%" }}
+          ></p>
         </div>
       </div>
       <div className="flex justify-evenly mt-3 items-center">
         <p className="rounded-xl mt-2 mb-2 w-1/2"></p>
-        <button className="border-0.5 bg-white rounded-xl animate-pul" style={{height:"36px",width:"108.333px"}}>
-          
-        </button>
+        <button
+          className="border-0.5 bg-white rounded-xl animate-pul"
+          style={{ height: "36px", width: "108.333px" }}
+        ></button>
       </div>
     </div>
   );
@@ -122,6 +134,8 @@ const Issues = () => {
   const [bio, setBio] = useState("");
   const [name, setName] = useState("");
   const debouncedFetchOrg = debounce(fetchOrg, 500);
+  const { user } = useAuth();
+
   const handleSearch = (event) => {
     if (
       event.key === "Enter" ||
@@ -261,15 +275,42 @@ const Issues = () => {
                           color:
                             Object.keys(issue.assignees).length === 0
                               ? "green"
-                              : "red",
+                              : "pink",
                         }}
                       >
                         {Object.keys(issue.assignees).length === 0
                           ? "<Not Assigned>"
                           : "<Assigned>"}
                       </p>
-                      <p className="px-2">Open</p>{" "}
-                      <StopCircle className="mr-2 h-6 w-5" />
+                      <button
+                        onClick={async () => {
+                          const permissions = [
+                            Permission.write(Role.user(user.$id)),
+                          ];
+                          const payload = {
+                            users: user.$id,
+                            name: issue.title,
+                            url: issue.url,
+                            org: issue.url.split("/")[4],
+                            repo: issue.url.split("/")[5],
+                          };
+                          const response = await databases.createDocument(
+                            DATABASE_ID,
+                            COLLECTION_ID_SAVEDISSUE,
+                            ID.unique(),
+                            payload,
+                            permissions
+                          );
+                          alert("Issue Saved")
+
+                          // console.log(user.$id, "  ", user),
+                            // console.log("RESPONSE:", response);
+                        }}
+                        className="flex hover:text-blue-600"
+                      >
+                        <p className="px-2">Save</p>{" "}
+                        <SaveFill className="mr-2 h-6 w-5" />
+                      </button>
                     </h3>
                   </div>
 
