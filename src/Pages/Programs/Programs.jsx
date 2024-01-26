@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Skeleton from "react-loading-skeleton";
+
 const projects = [
   {
     description: "Scalable geometric and statistical software",
@@ -1522,8 +1522,6 @@ const Programs = () => {
           Load More
         </button>
       )}
-      <div className="flex bg-black">      <Skeleton width={100} count={50} height={100}/>
-</div>
     </div>
   );
 };

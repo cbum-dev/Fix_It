@@ -6,9 +6,10 @@ import client, {
 } from "../../config";
 import { Query } from "appwrite";
 import { Check } from "react-bootstrap-icons";
-
+import { useAuth } from "../../utils/AuthContext";
 const SavedIssue = () => {
   const [savedIssues, setSavedIssues] = useState([]);
+  const { user } = useAuth();
   useEffect(() => {
     getIssues();
 
@@ -26,7 +27,7 @@ const SavedIssue = () => {
     const response = await databases.listDocuments(
       DATABASE_ID,
       COLLECTION_ID_SAVEDISSUE,
-      [Query.orderDesc("$createdAt"), Query.notEqual("isDone", true)]
+      [Query.orderDesc("$createdAt"), Query.notEqual("isDone", true),Query.equal("users",user.$id)]
     );
     console.log(response.documents);
     setSavedIssues(response.documents);
@@ -58,8 +59,8 @@ const SavedIssue = () => {
   };
 
   return (
-    <div className=" flex flex-wrap justify-center mx-2 mb-4">
-      <h1 className="text-3xl flex flex-col text-white md:text-6xl lg:text-7xl mt-4 mb-4">
+    <div className=" flex flex-col flex-wrap justify-center mx-2 mb-4">
+      <h1 className= " text-center text-3xl flex flex-col text-white md:text-6xl lg:text-7xl mt-4 mb-4">
         Your Saved Issues
               <p className="text-xl text-center my-2">All Your Saved Issues At One Place</p>
 
