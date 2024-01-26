@@ -19,8 +19,8 @@ const Footer = () => {
             Twitter
           </button>
         </div>
-        <div className="w-1/3 flex items-center justify-between">
-          <img className="h-36 object-cover w-full" src="./Fix It-logos_white.png" alt="" />
+        <div className="w-1/3 px-2 flex items-center justify-center">
+          <h1 className=" text-center items-center text-5xl md:text-8xl object-cover w-full"> Fix It </h1>
         </div>
         <div className="w-1/3 flex flex-col  justify-evenly">
           <Link className="text-right px-4" to="/">Home</Link>

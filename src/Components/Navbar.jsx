@@ -50,6 +50,16 @@ const Navbar = () => {
               >
                 Issues
               </Link>
+              {user ? (
+                <Link
+                  to="/issues/saved"
+                  className="text-white mx-4 focus:underline focus:text-blue-300 duration-300 "
+                >
+                  Saved Issues
+                </Link>
+              ) : (
+                <></>
+              )}
               <Link
                 to="/programs"
                 className="text-white block p-2 focus:underline"
@@ -64,6 +74,21 @@ const Navbar = () => {
               >
                 Contact
               </Link>
+              {user ? (
+                <button
+                  className="text-white mx-4 focus:underline  focus:text-blue-300 duration-300"
+                  onClick={handleLogout}
+                >
+                  <Link to="/">Logout</Link>
+                </button>
+              ) : (
+                <Link
+                  to="/login"
+                  className="text-white mx-4 focus:underline focus:text-blue-300 duration-300"
+                >
+                  Login
+                </Link>
+              )}
             </div>
           )}
         </div>
@@ -87,6 +112,16 @@ const Navbar = () => {
           >
             Issues
           </Link>
+          {user ? (
+            <Link
+              to="/issues/saved"
+              className="text-white mx-4 hover:underline hover:text-blue-300 duration-300 "
+            >
+              Saved Issues
+            </Link>
+          ) : (
+            <></>
+          )}
           <Link
             to="/programs"
             className="text-white mx-4 hover:underline hover:text-blue-300 duration-300"
@@ -114,7 +149,6 @@ const Navbar = () => {
               Login
             </Link>
           )}
-          
         </div>
       </div>
     </nav>

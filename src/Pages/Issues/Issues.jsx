@@ -92,8 +92,8 @@ const LoadingSkeleton = () => {
           <h3 className="text-lg md:text-2xl font-sans mb-2"></h3>
           <h3 className="flex">
             {" "}
-            <p className="" style={{ color: "white" }}>
-              <StopCircle className="mr-2 h-6 w-5" />
+            <p className="" style={{ color: "grey" }}>
+              <SaveFill className="mr-2 h-6 w-5" />
             </p>
           </h3>
         </div>
@@ -292,7 +292,7 @@ const Issues = () => {
                             name: issue.title,
                             url: issue.url,
                             org: issue.url.split("/")[4],
-                            repo: issue.url.split("/")[5],
+                            repo: issue.url.split("/")[5],         
                           };
                           const response = await databases.createDocument(
                             DATABASE_ID,

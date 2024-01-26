@@ -1,12 +1,111 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import client, {
+  databases,
+  DATABASE_ID,
+  COLLECTION_ID_SAVEDISSUE,
+} from "../../config";
+import { Query } from "appwrite";
+import { Check } from "react-bootstrap-icons";
 
 const SavedIssue = () => {
-    return (
-    <div className="flex flex-wrap justify-center mt-2 mb-2">
-      <h1>Hi</h1>
+  const [savedIssues, setSavedIssues] = useState([]);
+  useEffect(() => {
+    getIssues();
+
+    const unsubscribe = client.subscribe(
+      `database.${DATABASE_ID}.collections.${COLLECTION_ID_SAVEDISSUE}.documents`,
+      (response) => {}
+    );
+    console.log("unsubscribe", unsubscribe);
+    return () => {
+      unsubscribe();
+    };
+  }, []);
+
+  const getIssues = async () => {
+    const response = await databases.listDocuments(
+      DATABASE_ID,
+      COLLECTION_ID_SAVEDISSUE,
+      [Query.orderDesc("$createdAt"), Query.notEqual("isDone", true)]
+    );
+    console.log(response.documents);
+    setSavedIssues(response.documents);
+  };
+  const deleteIssue = async (id) => {
+    await databases.deleteDocument(DATABASE_ID, COLLECTION_ID_SAVEDISSUE, id);
+  };
+  const updateIssue = async (id) => {
+    try {
+      const currentDocument = await databases.getDocument(
+        DATABASE_ID,
+        COLLECTION_ID_SAVEDISSUE,
+        id
+      );
+
+      const updatedValue = {
+        isDone: !currentDocument.isDone,
+      };
+
+      await databases.updateDocument(
+        DATABASE_ID,
+        COLLECTION_ID_SAVEDISSUE,
+        id,
+        updatedValue
+      );
+    } catch (error) {
+      console.error("Error updating issue:", error);
+    }
+  };
+
+  return (
+    <div className=" flex flex-wrap justify-center mx-2 mb-4">
+      <h1 className="text-3xl flex flex-col text-white md:text-6xl lg:text-7xl mt-4 mb-4">
+        Your Saved Issues
+              <p className="text-xl text-center my-2">All Your Saved Issues At One Place</p>
+
+      </h1>
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+        {savedIssues.map((issue) => (
+          <div key={issue.$id} className="bg-gray-900 rounded-xl p-4">
+            <div className="flex flex-col justify-between">
+              <h1 className="h-20 text-white text-l md:text-xl ">
+                Name : {issue.name}
+              </h1>
+              <div className="flex flex-wrap justify-evenly my-2">
+                <h1 className="text-white text-xl bg-gray-700 px-4 py-0.5 rounded-xl my-2">
+                  Repository : {issue.repo}
+                </h1>{" "}
+                <h1 className="text-white text-xl bg-gray-700 px-4 py-0.5 rounded-xl my-2">
+                  Organization : {issue.org}
+                </h1>
+              </div>
+              <div className="flex items-center justify-evenly mt-4">
+                <button
+                  className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1.5 md:px-6 px-4 rounded"
+                  onClick={() => deleteIssue(issue.$id)}
+                >
+                  Delete
+                </button>
+              <a className="text-blue-300 underline text-xl md:text-2xl" href={issue.url}>Github Link</a>
+
+                <button
+                  className={`${
+                    issue.isDone
+                      ? "text-green-400 underline"
+                      : "bg-blue-500 hover:bg-blue-700 text-white"
+                  } md:px-6 font-bold py-1.5 px-4 rounded flex items-center`}
+                  onClick={() => updateIssue(issue.$id)}
+                >
+                  <Check className="mr-2" />
+                  <p>Done</p>
+                </button>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
-}
+};
 
 export default SavedIssue;
