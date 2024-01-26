@@ -34,6 +34,14 @@ Follow these steps to set up and run Fix_It on your local machine:
 
    This will start the application on `http://localhost:3000`.
 
+```
+VITE_API_ENDPOINT = ''
+VITE_PROJECT_ID = ''
+VITE_DATABASE_ID = ''
+VITE_COLLECTION_ID_SAVEDISSUE = ''
+VITE_COLLECTION_ID_USERS = ''
+```
+
 5. Open your web browser and visit `http://localhost:3000` to explore Fix_It.
 
 Now you have Fix_It up and running locally, providing a convenient hub for managing and exploring GitHub issues.
