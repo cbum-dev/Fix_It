@@ -44,21 +44,21 @@ const About = () => {
             Future Updates
           </h1>
           <p className="text-center text-lg md:text-xl">
-            Continuous improvement is our commitment. Expect enhanced user experiences, advanced project management features, and seamless
-            integration with various version control platforms.          </p>
-          </div>
+            Continuous improvement is our commitment. Expect enhanced user
+            experiences, advanced project management features, and seamless
+            integration with various version control platforms.{" "}
+          </p>
+        </div>
 
-          <div  className="bg-slate-900 rounded-lg py-6 md:px-6 px-4 my-2" >
-            <h1 className="text-xl text-blue-300 underline text-center mb-2 mt-2 md:text-3xl">
-              Hacktoberfest Issues
-            </h1>
-            <p className="text-center text-lg md:text-xl">
-              Dive into the world of Hacktoberfest! Discover beginner-friendly
-              issues and join the global open source celebration by making
-              meaningful contributions to projects.
-            </p>
-            
-            
+        <div className="bg-slate-900 rounded-lg py-6 md:px-6 px-4 my-2">
+          <h1 className="text-xl text-blue-300 underline text-center mb-2 mt-2 md:text-3xl">
+            Hacktoberfest Issues
+          </h1>
+          <p className="text-center text-lg md:text-xl">
+            Dive into the world of Hacktoberfest! Discover beginner-friendly
+            issues and join the global open source celebration by making
+            meaningful contributions to projects.
+          </p>
         </div>
         <div className="bg-slate-900 rounded-lg py-6 md:px-6 px-4 my-2">
           <h1 className="text-xl text-blue-300 underline text-center mb-2 mt-2 md:text-3xl">

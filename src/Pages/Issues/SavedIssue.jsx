@@ -75,7 +75,10 @@ const SavedIssue = () => {
               <div className="flex flex-wrap justify-evenly my-2">
                 <h1 className="text-white text-xl bg-gray-700 px-4 py-0.5 rounded-xl my-2">
                   Repository : {issue.repo}
-                </h1>{" "}
+                </h1>
+                <h1>
+                  {/* {issue.$createdAt.slice(0, 9)} } */}
+                </h1>
                 <h1 className="text-white text-xl bg-gray-700 px-4 py-0.5 rounded-xl my-2">
                   Organization : {issue.org}
                 </h1>
@@ -87,7 +90,7 @@ const SavedIssue = () => {
                 >
                   Delete
                 </button>
-              <a className="text-blue-300 underline text-xl md:text-2xl" href={issue.url}>Github Link</a>
+              <a className="text-blue-300 underline text-xl md:text-2xl" target="blank" rel=""  href={issue.url}>Github Link</a>
 
                 <button
                   className={`${

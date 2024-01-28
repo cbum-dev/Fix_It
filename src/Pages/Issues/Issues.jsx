@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { StopCircle, SaveFill } from "react-bootstrap-icons";
+import { SaveFill } from "react-bootstrap-icons";
 import client, {
   databases,
   DATABASE_ID,
@@ -274,8 +274,8 @@ const Issues = () => {
                         style={{
                           color:
                             Object.keys(issue.assignees).length === 0
-                              ? "green"
-                              : "pink",
+                              ? "lime"
+                              : "yellow",
                         }}
                       >
                         {Object.keys(issue.assignees).length === 0
@@ -283,14 +283,14 @@ const Issues = () => {
                           : "<Assigned>"}
                       </p>
                       <button
-                        onClick={async () => {
+                        onClick={!user ? alert("login first"):async () => {
                           const permissions = [
                             Permission.write(Role.user(user.$id)),
                           ];
                           const payload = {
                             users: user.$id,
                             name: issue.title,
-                            url: issue.url,
+                            url: issue.html_url,
                             org: issue.url.split("/")[4],
                             repo: issue.url.split("/")[5],         
                           };
@@ -320,12 +320,12 @@ const Issues = () => {
                 </div>
                 <div className="flex justify-between ">
                   <div className="w-1/2">
-                    <p className="bg-slate-700 text-green-300 rounded-xl mb-2 w-3/4 px-3 text-center">
+                    <p className="bg-slate-700 text-green-500 rounded-xl mb-2 w-3/4 px-3 text-center">
                       {issue.url.split("/")[4]}
                     </p>
                   </div>
                   <div className="w-1/2 flex items-center justify-center">
-                    <p className="bg-slate-700 text-green-300 rounded-xl mb-2 w-full  text-center">
+                    <p className="bg-slate-700 text-green-400 rounded-xl mb-2 w-full  text-center">
                       {extractRepoName(issue.html_url)}
                     </p>
                   </div>
