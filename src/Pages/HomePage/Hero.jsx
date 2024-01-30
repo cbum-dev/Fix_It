@@ -1,5 +1,5 @@
 import React from "react";
-import { Github, StopCircle, StarFill } from "react-bootstrap-icons";
+import { StopCircle, StarFill } from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
 const Hero = () => {
   return (

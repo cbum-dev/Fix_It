@@ -255,7 +255,7 @@ const Issues = () => {
               <button onClick={() => fetchData(searchTerm)}>Retry</button>
             </div>
           ) : issues.length === 0 ? (
-            <div className="text-white text-center">
+            <div className="text-white w-full text-center">
               <p className="text-3xl text-center">Data Not Found</p>
               <button onClick={() => fetchData(searchTerm)}>Retry</button>
             </div>
