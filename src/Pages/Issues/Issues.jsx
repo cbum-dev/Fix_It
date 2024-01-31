@@ -255,7 +255,7 @@ const Issues = () => {
               <button onClick={() => fetchData(searchTerm)}>Retry</button>
             </div>
           ) : issues.length === 0 ? (
-            <div className="text-white w-full text-center">
+            <div className="text-white  w-full text-center">
               <p className="text-3xl text-center">Data Not Found</p>
               <button onClick={() => fetchData(searchTerm)}>Retry</button>
             </div>
@@ -283,7 +283,7 @@ const Issues = () => {
                           : "<Assigned>"}
                       </p>
                       <button
-                        onClick={!user ? alert("login first"):async () => {
+                        onClick={async () => {
                           const permissions = [
                             Permission.write(Role.user(user.$id)),
                           ];
@@ -308,7 +308,7 @@ const Issues = () => {
                         }}
                         className="flex hover:text-blue-600"
                       >
-                        <p className="px-2">Save</p>{" "}
+                        <p className="px-2">{user?"Save":"Login To Save"}</p>{" "}
                         <SaveFill className="mr-2 h-6 w-5" />
                       </button>
                     </h3>
