@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import  { useState } from "react";
 import { Link } from "react-router-dom";
 import { ChevronDown, ChevronUp } from "react-feather";
 import { useAuth } from "../utils/AuthContext";
@@ -18,9 +18,20 @@ const Navbar = () => {
   return (
     <nav className="bg-gray-900 p-2.5 border-b-2 border-b-slate-400 fixed top-0 w-full z-50">
       <div className="container mx-auto flex justify-between items-center relative">
-        <Link to="/" className="text-white font-mono text-4xl font-bold">
-          Fix It
-        </Link>
+        <Link to="/" className=" text-4xl font-extrabold ">
+        <div className="flex items-center justify-center bg-slate-900  ">
+        <h1 className=" italic  text-blue-500 ">
+          F
+        </h1>
+        <h1 className="italic  text-blue-800 ">
+          I
+        </h1>
+        <h1 className="italic  text-red-800  ">
+          XI
+        </h1>
+        <h1 className=" italic  text-white">T</h1>
+        {/* <h1>B</h1> */}
+      </div>        </Link>
 
         <div className="flex md:hidden relative">
           <div className="relative inline-block text-left">

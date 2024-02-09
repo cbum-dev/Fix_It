@@ -17,13 +17,15 @@ const SavedIssue = () => {
 
     const unsubscribe = client.subscribe(
       `database.${DATABASE_ID}.collections.${COLLECTION_ID_SAVEDISSUE}.documents`,
-      (response) => {}
+      (response) => {
+        console.log("subscribe", response);
+      }
     );
     console.log("unsubscribe", unsubscribe);
     return () => {
       unsubscribe();
     };
-  }, [done,]);
+  }, [done]);
 
   const getIssues = async () => {
     const response = await databases.listDocuments(
