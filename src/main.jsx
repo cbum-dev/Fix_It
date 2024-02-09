@@ -13,7 +13,6 @@ import Login from "./Auth/Login.jsx";
 import Registration from "./Auth/Register.jsx";
 import SavedIssue from "./Pages/Issues/SavedIssue.jsx";
 import { AuthProvider } from "./utils/AuthContext.jsx";
-import { Save } from "react-bootstrap-icons";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <Router>

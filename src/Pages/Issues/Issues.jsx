@@ -1,11 +1,7 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { SaveFill } from "react-bootstrap-icons";
-import client, {
-  databases,
-  DATABASE_ID,
-  COLLECTION_ID_SAVEDISSUE,
-} from "../../config";
+import { databases, DATABASE_ID, COLLECTION_ID_SAVEDISSUE } from "../../config";
 import { ID, Permission, Role } from "appwrite";
 import { useAuth } from "../../utils/AuthContext";
 const debounce = (func, delay) => {
@@ -19,6 +15,8 @@ const debounce = (func, delay) => {
     }, delay);
   };
 };
+
+
 
 const calculateTimeDifference = (createdDate) => {
   const currentDate = new Date();
@@ -68,21 +66,21 @@ const extractRepoName = (url) => {
   const parts = url.split("/");
   return parts[4];
 };
-const Dropdown = ({ value, onChange, options }) => {
-  return (
-    <select
-      value={value}
-      onChange={(e) => onChange(e.target.value)}
-      className="px-4 w-11/12 py-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300 bg-slate-200"
-    >
-      {options.map((option) => (
-        <option key={option.value} value={option.value}>
-          {option.label}
-        </option>
-      ))}
-    </select>
-  );
-};
+// const Dropdown = ({ value, onChange, options }) => {
+//   return (
+//     <select
+//       value={value}
+//       onChange={(e) => onChange(e.target.value)}
+//       className="px-4 w-11/12 py-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300 bg-slate-200"
+//     >
+//       {options.map((option) => (
+//         <option key={option.value} value={option.value}>
+//           {option.label}
+//         </option>
+//       ))}
+//     </select>
+//   );
+// };
 
 const LoadingSkeleton = () => {
   return (
@@ -133,8 +131,20 @@ const Issues = () => {
   const [error, setError] = useState(null);
   const [bio, setBio] = useState("");
   const [name, setName] = useState("");
+  const [label, setLabel] = useState([]);
+
   const debouncedFetchOrg = debounce(fetchOrg, 500);
   const { user } = useAuth();
+
+  const getLabels = () => {
+    fetch(`https://api.github.com/repos/appwrite/appwrite/labels`)
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        setLabel(data);
+      })
+      .catch((error) => console.log(error));
+  };
 
   const handleSearch = (event) => {
     if (
@@ -220,6 +230,13 @@ const Issues = () => {
           />
           {/* <button className="px-2.5 border-2 mx-2 bg-slate-300 rounded-lg ">Save Organzation</button> */}
         </div>
+        {label.map((label) => (
+          <div key={label.id} className="flex justify-center m-6 text-black">
+            <select name="label" id="">
+              <option value={label.name}>{label.name}</option>
+            </select>
+          </div>
+        ))}
 
         <div className="flex justify-center m-6 text-black">
           <select
@@ -292,7 +309,7 @@ const Issues = () => {
                             name: issue.title,
                             url: issue.html_url,
                             org: issue.url.split("/")[4],
-                            repo: issue.url.split("/")[5],         
+                            repo: issue.url.split("/")[5],
                           };
                           const response = await databases.createDocument(
                             DATABASE_ID,
@@ -301,14 +318,16 @@ const Issues = () => {
                             payload,
                             permissions
                           );
-                          alert("Issue Saved")
+                          alert("Issue Saved");
 
                           // console.log(user.$id, "  ", user),
-                            // console.log("RESPONSE:", response);
+                          console.log("RESPONSE:", response);
                         }}
                         className="flex hover:text-blue-600"
                       >
-                        <p className="px-2">{user?"Save":"Login To Save"}</p>{" "}
+                        <p className="px-2">
+                          {user ? "Save" : "Login To Save"}
+                        </p>{" "}
                         <SaveFill className="mr-2 h-6 w-5" />
                       </button>
                     </h3>

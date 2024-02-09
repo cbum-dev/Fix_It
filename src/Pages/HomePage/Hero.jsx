@@ -1,4 +1,3 @@
-import React from "react";
 import { StopCircle, StarFill } from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
 const Hero = () => {

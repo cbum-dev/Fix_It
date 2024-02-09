@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import  { useState, useEffect } from "react";
 import client, {
   databases,
   DATABASE_ID,
@@ -10,6 +10,8 @@ import { useAuth } from "../../utils/AuthContext";
 const SavedIssue = () => {
   const [savedIssues, setSavedIssues] = useState([]);
   const { user } = useAuth();
+  const [done, setDone] = useState(false);
+
   useEffect(() => {
     getIssues();
 
@@ -21,7 +23,7 @@ const SavedIssue = () => {
     return () => {
       unsubscribe();
     };
-  }, []);
+  }, [done,]);
 
   const getIssues = async () => {
     const response = await databases.listDocuments(
@@ -53,6 +55,7 @@ const SavedIssue = () => {
         id,
         updatedValue
       );
+      setDone(true);
     } catch (error) {
       console.error("Error updating issue:", error);
     }
@@ -69,7 +72,7 @@ const SavedIssue = () => {
         {savedIssues.map((issue) => (
           <div key={issue.$id} className="bg-gray-900 rounded-xl p-4">
             <div className="flex flex-col justify-between">
-              <h1 className="h-20 text-white text-l md:text-xl ">
+              <h1 className="h-20 text-white text-l md:text-l ">
                 Name : {issue.name}
               </h1>
               <div className="flex flex-wrap justify-evenly my-2">
