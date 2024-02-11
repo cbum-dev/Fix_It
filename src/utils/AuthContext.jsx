@@ -19,6 +19,7 @@ export const AuthProvider = ({children}) => {
             let accountDetails = await account.get();
             setUser(accountDetails)
         }catch(error){
+            console.error(error)
             
         }
         setLoading(false)

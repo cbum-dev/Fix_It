@@ -16,8 +16,6 @@ const debounce = (func, delay) => {
   };
 };
 
-
-
 const calculateTimeDifference = (createdDate) => {
   const currentDate = new Date();
   const issueDate = new Date(createdDate);
@@ -165,6 +163,7 @@ const Issues = () => {
   const handleLabelChange = (label) => {
     setSelectedLabel(label);
     fetchData(searchTerm, label);
+    
   };
 
   const fetchData = (org, label = selectedLabel) => {
@@ -195,6 +194,7 @@ const Issues = () => {
 
   useEffect(() => {
     fetchData("appwrite");
+    getLabels();
   }, []);
   useEffect(() => {
     document.addEventListener("keydown", handleSearchDebounced);
@@ -230,14 +230,14 @@ const Issues = () => {
           />
           {/* <button className="px-2.5 border-2 mx-2 bg-slate-300 rounded-lg ">Save Organzation</button> */}
         </div>
-        {label.map((label) => (
+        {/* {label.map((label) => (
           <div key={label.id} className="flex justify-center m-6 text-black">
             <select name="label" id="">
               <option value={label.name}>{label.name}</option>
             </select>
           </div>
-        ))}
-
+        ))} */}
+{/* 
         <div className="flex justify-center m-6 text-black">
           <select
             value={selectedLabel}
@@ -259,7 +259,23 @@ const Issues = () => {
             <option value="funcselecttions">Functions</option>
           </select>
           {/* <button className="px-6 border-2 mx-2 bg-slate-300 rounded-lg ">Save</button> */}
-        </div>
+
+        {label.length > 0 && (
+          <div key={label[0].id} className="flex justify-center m-6 text-black">
+              <select
+                value={selectedLabel}
+                onChange={(e) => handleLabelChange(e.target.value)}
+                className="px-4 w-11/12 py-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300 bg-slate-200"
+              >
+                {label.map((label) => (
+                  <option key={label.id} value={label.name}>
+                    {label.name}
+                  </option>
+                ))}
+              </select>
+            {/* <button className="px-6 border-2 mx-2 bg-slate-300 rounded-lg ">Save</button> */}
+          </div>
+        )}
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
           {loading ? (
