@@ -1,7 +1,5 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import "./index.css";
 import Contact from "./Pages/Contact/Contact.jsx";
 import Hero from "./Pages/HomePage/Hero.jsx";
 import Navbar from "./Components/Navbar.jsx";
@@ -12,7 +10,10 @@ import About from "./Pages/About/About.jsx";
 import Login from "./Auth/Login.jsx";
 import Registration from "./Auth/Register.jsx";
 import SavedIssue from "./Pages/Issues/SavedIssue.jsx";
+import Dashboard from "./Pages/HomePage/Dashboard.jsx";
 import { AuthProvider } from "./utils/AuthContext.jsx";
+import {BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import "./index.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <Router>
@@ -20,6 +21,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <React.StrictMode>
       <Navbar />
       <Routes>
+        <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/login" element={<Login />} />
         <Route path="/" element={<Hero />} />
         <Route path="/issues" element={<Issues />} />
