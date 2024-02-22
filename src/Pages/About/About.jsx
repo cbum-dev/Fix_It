@@ -1,5 +1,5 @@
 import React from "react";
-
+import DescriptionCard from "../../Components/Description";
 const About = () => {
   return (
     <div className="flex flex-col items-center text-white px-2">
@@ -9,17 +9,12 @@ const About = () => {
         Why Search, When You Can Pull And Merge...
       </h1>
       <div className="border-b-2 border-b-slate-700 py-2 mb-2 border-t-2 border-t-slate-700">
-        <div className="bg-slate-900 rounded-lg py-6 md:px-6 px-4">
-          <h1 className="text-2xl text-center text-blue-300  underline mb-2 md:text-3xl lg:text-4xl ">
-            Our Mission
-          </h1>
-          <p className="text-center text-lg md:text-xl">
-            Welcome to "fix it", A place for all the issues for your ease.Foster
-            collaboration within open source by connecting developers with
-            impactful projects, promoting inclusivity, and simplifying the
-            onboarding process.
-          </p>
-        </div>
+        <DescriptionCard
+          title={"Our Mission"}
+          description={
+            "Welcome to fix it,A place for all the issues for your ease.Foster collaboration within open source by connecting developers with impactful projects, promoting inclusivity, and simplifying the onboarding process."
+          }
+        />
 
         <div className="bg-slate-900 rounded-lg py-6 md:px-6 px-4 my-2">
           <h1 className="text-xl text-center text-blue-300 underline mb-2 mt-2 md:text-3xl">
@@ -38,7 +33,7 @@ const About = () => {
             encouraging experienced developers to guide and support newcomers.
           </p>
         </div>
-
+          <DescriptionCard title={"Future Updates"} 
         <div className="bg-slate-900 rounded-lg py-6 md:px-6 px-4 my-2">
           <h1 className="text-xl text-center text-blue-300 underline mb-2 mt-2 md:text-3xl">
             Future Updates
