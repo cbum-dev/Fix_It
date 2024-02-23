@@ -33,7 +33,7 @@ const About = () => {
             encouraging experienced developers to guide and support newcomers.
           </p>
         </div>
-          <DescriptionCard title={"Future Updates"} 
+          <DescriptionCard title={"Future Updates"}/>
         <div className="bg-slate-900 rounded-lg py-6 md:px-6 px-4 my-2">
           <h1 className="text-xl text-center text-blue-300 underline mb-2 mt-2 md:text-3xl">
             Future Updates

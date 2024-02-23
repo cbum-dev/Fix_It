@@ -2,7 +2,7 @@ import { StopCircle, StarFill } from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
 const Hero = () => {
   return (
-    <div className="bg-gray-900 flex flex-col justify-center h-screen items-center text-white py-10">
+    <div className="bg-gray-950 flex flex-col justify-center h-screen items-center text-white py-10">
       <h1 className="text-5xl md:text-7xl font-bold mb-4">Welcome to Fix it</h1>
       <button className="mt-6 mb-6  flex gap-3 cursor-pointer text-white font-semibold bg-gradient-to-r from-gray-800 to-black px-7 py-3 rounded-full border border-gray-600 hover:scale-105 duration-300 hover:text-gray-300 hover:border-gray-800 hover:from-black hover:to-gray-900">
         <svg
