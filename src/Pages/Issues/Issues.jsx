@@ -82,7 +82,7 @@ const extractRepoName = (url) => {
 
 const LoadingSkeleton = () => {
   return (
-    <div className=" bg-gray-600 rounded-xl h-56 animate-pulse px-2 py-2">
+    <div className=" bg-slate-900 border-gray-300 rounded-xl h-56 animate-pulse px-2 py-2">
       <div className="h-3/5">
         <div className="flex justify-between">
           <h3 className="text-lg md:text-2xl font-sans mb-2"></h3>
@@ -204,7 +204,7 @@ const Issues = () => {
     };
   }, [handleSearchDebounced]);
   return (
-    <div className="flex flex-col justify-center items-center mx-2 my-4">
+    <div className="flex  flex-col justify-center items-center mx-2 my-4">
       <h1 className="text-3xl md:text-6xl lg:text-7xl text-white ">
         {selectedLabel === "good first issue"
           ? "Good First Issues For You"
@@ -294,7 +294,7 @@ const Issues = () => {
             </div>
           ) : (
             issues.map((issue) => (
-              <div key={issue.id} className="bg-gray-900 rounded-xl h-60 p-4">
+              <div key={issue.id} className="bg-slate-900 rounded-xl h-60 p-4">
                 <div className="h-3/5">
                   <div className="flex justify-between">
                     <h3 className="text-lg md:text-2xl font-sans mb-2">

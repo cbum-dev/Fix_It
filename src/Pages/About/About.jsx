@@ -2,8 +2,8 @@ import React from "react";
 import DescriptionCard from "../../Components/Description";
 const About = () => {
   return (
-    <div className="flex flex-col items-center text-white px-2">
-      <h1 className="text-3xl mt-2 mb-4  md:text-6xl lg:text-7xl">About Us</h1>
+    <div className="flex flex-col bg-black items-center text-white px-2">
+      <h1 className="text-3xl mt-2 mb-4  md:text-6xl  lg:text-7xl">About Us</h1>
       <h1 className="text-5xl mb-4">Let's Fix It</h1>
       <h1 className="text-xl text-center md:text-3xl mb-4 font-mono">
         Why Search, When You Can Pull And Merge...
@@ -16,7 +16,7 @@ const About = () => {
           }
         />
 
-        <div className="bg-slate-900 rounded-lg py-6 md:px-6 px-4 my-2">
+        <div className="bg-zinc-950 rounded-lg py-6 md:px-6 px-4 my-2">
           <h1 className="text-xl text-center text-blue-300 underline mb-2 mt-2 md:text-3xl">
             Our Goals
           </h1>
@@ -33,8 +33,8 @@ const About = () => {
             encouraging experienced developers to guide and support newcomers.
           </p>
         </div>
-        <DescriptionCard title={"Future Updates"} />
-        <div className="bg-slate-900 rounded-lg py-6 md:px-6 px-4 my-2">
+        {/* <DescriptionCard title={"Future Updates"} /> */}
+        <div className="bg-zinc-950  rounded-lg py-6 md:px-6 px-4 my-2">
           <h1 className="text-xl text-center text-blue-300 underline mb-2 mt-2 md:text-3xl">
             Future Updates
           </h1>
@@ -45,7 +45,7 @@ const About = () => {
           </p>
         </div>
 
-        <div className="bg-slate-900 rounded-lg py-6 md:px-6 px-4 my-2">
+        <div className="bg-zinc-950 rounded-lg py-6 md:px-6 px-4 my-2">
           <h1 className="text-xl text-blue-300 underline text-center mb-2 mt-2 md:text-3xl">
             Hacktoberfest Issues
           </h1>
@@ -55,7 +55,7 @@ const About = () => {
             meaningful contributions to projects.
           </p>
         </div>
-        <div className="bg-slate-900 rounded-lg py-6 md:px-6 px-4 my-2">
+        <div className="bg-zinc-950 rounded-lg py-6 md:px-6 px-4 my-2">
           <h1 className="text-xl text-blue-300 underline text-center mb-2 mt-2 md:text-3xl">
             Join Us
           </h1>
@@ -66,7 +66,7 @@ const About = () => {
             everyone involved.
           </p>
         </div>
-        <div className="bg-slate-900 rounded-lg py-6 md:px-6 px-4 my-2">
+        <div className="bg-zinc-950 rounded-lg py-6 md:px-6 px-4 my-2">
           <h1 className="text-xl text-blue-300 underline text-center mb-2 mt-2 md:text-3xl">
             Latest GSoC Programs
           </h1>
@@ -76,7 +76,7 @@ const About = () => {
             while gaining valuable experience.
           </p>
         </div>
-        <div className="bg-slate-900 rounded-lg py-6 md:px-6 px-4 my-2">
+        <div className="bg-zinc-950 rounded-lg py-6 md:px-6 px-4 my-2">
           <h1 className="text-xl text-blue-300 underline text-center mb-2 mt-2 md:text-3xl">
             Hacktoberfest Issues
           </h1>

@@ -14,7 +14,7 @@ const Contact = () => {
   return (
     <div className="text-white  flex flex-col items-center mx-4 justify-center">
       <h1 className="text-3xl md:text-6xl lg:text-7xl my-4">Contact Us</h1>
-      <div className="bg-slate-900 w-full rounded-lg py-6 md:px-6 px-4">
+      <div className="bg-zinc-950 w-full rounded-lg py-6 md:px-6 px-4">
         <h1 className="md:text-3xl text-2xl underline text-center text-blue-300 mt-2 mb-2">
           Contact Us: Contribute to Open Source with Fix It!
         </h1>
@@ -25,7 +25,7 @@ const Contact = () => {
           collaboration, and we invite you to be part of our vibrant community.
         </p>
       </div>
-      <div className="bg-slate-900 rounded-lg w-full py-6 md:px-6 px-4 my-2">
+      <div className="bg-zinc-950 rounded-lg w-full py-6 md:px-6 px-4 my-2">
         <h1 className="md:text-3xl text-2xl underline text-center text-blue-300 mt-2 mb-2">
           Why Contribute?
         </h1>
@@ -46,7 +46,7 @@ const Contact = () => {
           </li>
         </ul>
       </div>
-      <div className="bg-slate-900 rounded-lg w-full py-6 md:px-6 px-4 mb-2">
+      <div className="bg-zinc-950 rounded-lg w-full py-6 md:px-6 px-4 mb-2">
         <h1 className="md:text-3xl text-2xl underline text-center text-blue-300 mt-2 mb-2">
           How to Contribute:
         </h1>
@@ -57,7 +57,7 @@ const Contact = () => {
           impact.
         </p>
       </div>
-      <div className="bg-slate-900 rounded-lg w-full py-6 md:px-6 px-4 mb-2">
+      <div className="bg-zinc-950 rounded-lg w-full py-6 md:px-6 px-4 mb-2">
         <h1 className="md:text-3xl text-2xl underline text-center text-blue-300 mt-2 mb-2">
           Get in Touch
         </h1>
@@ -70,7 +70,7 @@ const Contact = () => {
         </p>
       </div>
 
-      <div className="bg-slate-900 rounded-lg py-6 md:px-6 px-4 mb-2 w-full">
+      <div className="bg-zinc-950 rounded-lg py-6 md:px-6 px-4 mb-2 w-full">
         <ul className="flex justify-evenly space-x-4 mt-4 ">
           <li className="mb-4">
             <a
