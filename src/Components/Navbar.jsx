@@ -20,16 +20,7 @@ const Navbar = () => {
       <div className="container mx-auto flex justify-between items-center relative">
         <Link to="/" className=" text-4xl font-extrabold ">
         <div className="flex items-center justify-center   ">
-        <h1 className=" italic  text-blue-500 ">
-          F
-        </h1>
-        <h1 className="italic  text-blue-800 ">
-          I
-        </h1>
-        <h1 className="italic  text-red-800  ">
-          XI
-        </h1>
-        <h1 className=" italic  text-white">T</h1>
+        <h1 className="text-white">FIX IT</h1>
         {/* <h1>B</h1> */}
       </div>        </Link>
 

@@ -8,7 +8,7 @@ const About = () => {
       <h1 className="text-xl text-center md:text-3xl mb-4 font-mono">
         Why Search, When You Can Pull And Merge...
       </h1>
-      <div className="border-b-2 border-b-slate-700 py-2 mb-2 border-t-2 border-t-slate-700">
+      <div className="border-b-2  border-b-slate-700 py-2 mb-2 border-t-2 border-t-slate-700">
         <DescriptionCard
           title={"Our Mission"}
           description={
@@ -33,7 +33,7 @@ const About = () => {
             encouraging experienced developers to guide and support newcomers.
           </p>
         </div>
-          <DescriptionCard title={"Future Updates"}/>
+        <DescriptionCard title={"Future Updates"} />
         <div className="bg-slate-900 rounded-lg py-6 md:px-6 px-4 my-2">
           <h1 className="text-xl text-center text-blue-300 underline mb-2 mt-2 md:text-3xl">
             Future Updates
