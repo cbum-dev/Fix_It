@@ -3,8 +3,15 @@ import { Link } from "react-router-dom";
 const Hero = () => {
   return (
     <div className="bg-black flex flex-col justify-center h-screen items-center text-white py-10">
-      <h1 className="text-5xl text-slate-200 text-center md:text-7xl font-sans font-extrabold mb-4">The Github Issue Controller</h1>
-      <h1 className="text-lg text-center md:text-xl font-sans text-gray-400 mb-4">Struggling to pinpoint the ideal repository or address an issue effectively?<br /> Look no further, we've got you covered!</h1>
+      <h1 className="text-5xl text-slate-200 text-center md:text-7xl font-sans font-extrabold mb-4">
+        The Github Issue Controller
+      </h1>
+      <h1 className="text-lg text-center md:text-xl font-sans text-gray-400 mb-4">
+        Struggling to pinpoint the ideal repository or address an issue
+        effectively?
+        <br /> Look no further, we've got you covered!
+      </h1>
+
       <button className="mt-6 mb-6  flex gap-3 cursor-pointer text-white font-semibold bg-gradient-to-r from-gray-800 to-black px-7 py-3 rounded-full border border-gray-600 hover:scale-105 duration-300 hover:text-gray-300 hover:border-gray-800 hover:from-black hover:to-gray-900">
         <svg
           viewBox="0 0 24 24"
@@ -25,12 +32,10 @@ const Hero = () => {
           Follow Along On Github
         </Link>
       </button>
-      <p className="md:text-xl text-center text-slate-300 mt-4">
-        Find and resolve GitHub issues with ease.
-        <br />A simple and easy to use tool to help you find and resolve issues
-        on GitHub.
+      <p className="md:text-xl text-center text-slate-300 ">
+        A simple and easy to use tool to help you find and resolve issues on
+        GitHub.
       </p>
-
       <div className="md:w-3/6 flex flex-col md:flex-row  md:justify-evenly mt-8">
         <button className="flex duration-300 hover:scale-105 hover:border-slate-800 bg-slate-200 text-black px-4 py-2 rounded-full mt-6 mb-6 border-2 border-slate-900  hover:bg-black hover:text-white">
           <StopCircle className="mr-2 h-5 w-5 " />
