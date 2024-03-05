@@ -64,21 +64,6 @@ const extractRepoName = (url) => {
   const parts = url.split("/");
   return parts[4];
 };
-// const Dropdown = ({ value, onChange, options }) => {
-//   return (
-//     <select
-//       value={value}
-//       onChange={(e) => onChange(e.target.value)}
-//       className="px-4 w-11/12 py-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300 bg-slate-200"
-//     >
-//       {options.map((option) => (
-//         <option key={option.value} value={option.value}>
-//           {option.label}
-//         </option>
-//       ))}
-//     </select>
-//   );
-// };
 
 const LoadingSkeleton = () => {
   return (
@@ -294,7 +279,7 @@ const Issues = () => {
             </div>
           ) : (
             issues.map((issue) => (
-              <div key={issue.id} className="bg-slate-900 rounded-xl h-60 p-4">
+              <div key={issue.id} className="bg-zinc-900  border border-zinc-700 rounded-xl h-60 p-4">
                 <div className="h-3/5">
                   <div className="flex justify-between">
                     <h3 className="text-lg md:text-2xl font-sans mb-2">
@@ -355,12 +340,12 @@ const Issues = () => {
                 </div>
                 <div className="flex justify-between ">
                   <div className="w-1/2">
-                    <p className="bg-slate-700 text-green-500 rounded-xl mb-2 w-3/4 px-3 text-center">
+                    <p className="bg-slate-700 border border-zinc-600 text-green-500 rounded-xl mb-2 w-3/4 px-3 text-center">
                       {issue.url.split("/")[4]}
                     </p>
                   </div>
                   <div className="w-1/2 flex items-center justify-center">
-                    <p className="bg-slate-700 text-green-400 rounded-xl mb-2 w-full  text-center">
+                    <p className="bg-slate-700 border border-zinc-600 text-green-400 rounded-xl mb-2 w-full  text-center">
                       {extractRepoName(issue.html_url)}
                     </p>
                   </div>
@@ -370,7 +355,7 @@ const Issues = () => {
                     {calculateTimeDifference(issue.created_at)}
                   </p>
 
-                  <button className="px-4  py-1.5 bg-slate-300 hover:text-slate-100 hover:bg-slate-700 text-black rounded-xl border-0.5">
+                  <button className="px-4  py-1.5 bg-slate-300 hover:text-slate-100 hover:bg-zinc-950 border border-zinc-800  duration-200 text-black rounded-xl border-0.5">
                     <Link
                       to={issue.html_url}
                       target="_blank"
