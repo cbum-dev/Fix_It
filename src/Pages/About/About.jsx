@@ -1,4 +1,3 @@
-import React from "react";
 import DescriptionCard from "../../Components/Description";
 const About = () => {
   return (
@@ -8,6 +7,7 @@ const About = () => {
       <h1 className="text-xl text-center md:text-3xl mb-4 font-mono">
         Why Search, When You Can Pull And Merge...
       </h1>
+
       <div className="border-b-2  border-b-slate-700 py-2 mb-2 border-t-2 border-t-slate-700">
         <DescriptionCard
           title={"Our Mission"}
@@ -16,7 +16,7 @@ const About = () => {
           }
         />
 
-        <div className="bg-zinc-950 rounded-lg py-6 md:px-6 px-4 my-2">
+        <div className="bg-zinc-900 rounded-lg py-6 md:px-6 px-4 my-2">
           <h1 className="text-xl text-center text-blue-300 underline mb-2 mt-2 md:text-3xl">
             Our Goals
           </h1>
@@ -34,7 +34,7 @@ const About = () => {
           </p>
         </div>
         {/* <DescriptionCard title={"Future Updates"} /> */}
-        <div className="bg-zinc-950  rounded-lg py-6 md:px-6 px-4 my-2">
+        <div className="bg-zinc-900  rounded-lg py-6 md:px-6 px-4 my-2">
           <h1 className="text-xl text-center text-blue-300 underline mb-2 mt-2 md:text-3xl">
             Future Updates
           </h1>
@@ -44,18 +44,30 @@ const About = () => {
             integration with various version control platforms.{" "}
           </p>
         </div>
-
-        <div className="bg-zinc-950 rounded-lg py-6 md:px-6 px-4 my-2">
-          <h1 className="text-xl text-blue-300 underline text-center mb-2 mt-2 md:text-3xl">
-            Hacktoberfest Issues
-          </h1>
-          <p className="text-center text-lg md:text-xl">
-            Dive into the world of Hacktoberfest! Discover beginner-friendly
-            issues and join the global open source celebration by making
-            meaningful contributions to projects.
-          </p>
+        <div className="md:grid grid-cols-2 gap-2">
+          <div className="bg-zinc-900 rounded-lg py-6 md:px-6 px-4 my-2">
+            <h1 className="text-xl text-blue-300 underline text-center mb-2 mt-2 md:text-3xl">
+              Hacktoberfest Issues
+            </h1>
+            <p className="text-center text-lg md:text-xl">
+              Dive into the world of Hacktoberfest! Discover beginner-friendly
+              issues and join the global open source celebration by making
+              meaningful contributions to projects.
+            </p>
+          </div>
+          <div className="bg-zinc-900 rounded-lg py-6 md:px-6 px-4 my-2">
+            <h1 className="text-xl text-blue-300 underline text-center mb-2 mt-2 md:text-3xl">
+              Latest GSoC Programs
+            </h1>
+            <p className="text-center text-lg md:text-xl">
+              Explore the latest Google Summer of Code (GSoC) programs. Find
+              exciting projects and opportunities to contribute to open source
+              while gaining valuable experience.
+            </p>
+          </div>
         </div>
-        <div className="bg-zinc-950 rounded-lg py-6 md:px-6 px-4 my-2">
+
+        <div className="bg-zinc-900 rounded-lg py-6 md:px-6 px-4 my-2">
           <h1 className="text-xl text-blue-300 underline text-center mb-2 mt-2 md:text-3xl">
             Join Us
           </h1>
@@ -64,26 +76,6 @@ const About = () => {
             and meaningful contributions to open source. Together, let's make
             open-source development accessible, rewarding, and impactful for
             everyone involved.
-          </p>
-        </div>
-        <div className="bg-zinc-950 rounded-lg py-6 md:px-6 px-4 my-2">
-          <h1 className="text-xl text-blue-300 underline text-center mb-2 mt-2 md:text-3xl">
-            Latest GSoC Programs
-          </h1>
-          <p className="text-center text-lg md:text-xl">
-            Explore the latest Google Summer of Code (GSoC) programs. Find
-            exciting projects and opportunities to contribute to open source
-            while gaining valuable experience.
-          </p>
-        </div>
-        <div className="bg-zinc-950 rounded-lg py-6 md:px-6 px-4 my-2">
-          <h1 className="text-xl text-blue-300 underline text-center mb-2 mt-2 md:text-3xl">
-            Hacktoberfest Issues
-          </h1>
-          <p className="text-center text-lg md:text-xl">
-            Dive into the world of Hacktoberfest! Discover beginner-friendly
-            issues and join the global open source celebration by making
-            meaningful contributions to projects.
           </p>
         </div>
       </div>
