@@ -12,7 +12,7 @@ import { faHashnode } from "@fortawesome/free-brands-svg-icons/faHashnode";
 const Contact = () => {
   return (
     <div className="text-white  flex flex-col items-center mx-4 justify-center">
-      <h1 className="text-3xl md:text-6xl lg:text-7xl my-4 underline mb-6">Contact Us</h1>
+      <h1 className="text-3xl md:text-6xl lg:text-7xl my-4  mb-6">Contact Us</h1>
       <div className="">
         <div className="bg-zinc-900  w-full rounded-lg py-6 md:px-6 px-4">
         <h1 className=" text-2xl underline text-center text-blue-300 mt-2 mb-2">

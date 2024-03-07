@@ -1513,7 +1513,8 @@ const Programs = () => {
       >
         Search
       </button>
-      <ProjectList projects={projects} visibleProjects={visibleProjects} />
+              <ProjectList projects={projects} visibleProjects={visibleProjects} />
+
       {visibleProjects.length < projects.length && (
         <button
           onClick={loadMore}

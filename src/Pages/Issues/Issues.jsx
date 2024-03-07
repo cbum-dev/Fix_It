@@ -319,7 +319,7 @@ const Issues = () => {
                             payload,
                             permissions
                           );
-                          alert("Issue Saved");
+                          // alert("Issue Saved");
 
                           // console.log(user.$id, "  ", user),
                           console.log("RESPONSE:", response);

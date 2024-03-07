@@ -11,10 +11,10 @@ const SavedIssue = () => {
   const [savedIssues, setSavedIssues] = useState([]);
   const { user } = useAuth();
   const [done, setDone] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     getIssues();
-
     const unsubscribe = client.subscribe(
       `database.${DATABASE_ID}.collections.${COLLECTION_ID_SAVEDISSUE}.documents`,
       (response) => {
@@ -38,6 +38,7 @@ const SavedIssue = () => {
   };
   const deleteIssue = async (id) => {
     await databases.deleteDocument(DATABASE_ID, COLLECTION_ID_SAVEDISSUE, id);
+    setDone(!done);
   };
   const updateIssue = async (id) => {
     try {
@@ -57,7 +58,7 @@ const SavedIssue = () => {
         id,
         updatedValue
       );
-      setDone(true);
+      setDone(!done);
     } catch (error) {
       console.error("Error updating issue:", error);
     }
@@ -70,27 +71,29 @@ const SavedIssue = () => {
               <p className="text-xl text-center my-2">All Your Saved Issues At One Place</p>
 
       </h1>
+
+
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
         {savedIssues.map((issue) => (
-          <div key={issue.$id} className="bg-gray-900 rounded-xl p-4">
+          <div key={issue.$id} className="bg-zinc-900 h-60 border border-zinc-700 rounded-xl p-4">
             <div className="flex flex-col justify-between">
-              <h1 className="h-20 text-white text-l md:text-l ">
+              <h1 className="h-20 text-white text-lg md:text-l ">
                 Name : {issue.name}
               </h1>
               <div className="flex flex-wrap justify-evenly my-2">
-                <h1 className="text-white text-xl bg-gray-700 px-4 py-0.5 rounded-xl my-2">
+                <h1 className="text-white text-xl bg-gray-700 px-4  rounded-xl my-2">
                   Repository : {issue.repo}
                 </h1>
                 <h1>
                   {/* {issue.$createdAt.slice(0, 9)} } */}
                 </h1>
-                <h1 className="text-white text-xl bg-gray-700 px-4 py-0.5 rounded-xl my-2">
+                <h1 className="text-white text-xl bg-gray-700 px-4  rounded-xl my-2">
                   Organization : {issue.org}
                 </h1>
               </div>
               <div className="flex items-center justify-evenly mt-4">
                 <button
-                  className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1.5 md:px-6 px-4 rounded"
+                  className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1.5 md:px-6 px-4 rounded-lg"
                   onClick={() => deleteIssue(issue.$id)}
                 >
                   Delete
@@ -102,7 +105,7 @@ const SavedIssue = () => {
                     issue.isDone
                       ? "text-green-400 underline"
                       : "bg-blue-500 hover:bg-blue-700 text-white"
-                  } md:px-6 font-bold py-1.5 px-4 rounded flex items-center`}
+                  } md:px-6 font-bold py-1.5 px-4 rounded-lg flex items-center`}
                   onClick={() => updateIssue(issue.$id)}
                 >
                   <Check className="mr-2" />
