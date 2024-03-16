@@ -10,6 +10,7 @@ import About from "./Pages/About/About.jsx";
 import Login from "./Auth/Login.jsx";
 import Registration from "./Auth/Register.jsx";
 import SavedIssue from "./Pages/Issues/SavedIssue.jsx";
+import Team from "./Pages/Team/Team.jsx";
 import Dashboard from "./Pages/HomePage/Dashboard.jsx";
 import { AuthProvider } from "./utils/AuthContext.jsx";
 import {BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -22,6 +23,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <Navbar />
       <Routes>
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/team" element={<Team />} />
         <Route path="/login" element={<Login />} />
         <Route path="/" element={<Hero />} />
         <Route path="/issues" element={<Issues />} />

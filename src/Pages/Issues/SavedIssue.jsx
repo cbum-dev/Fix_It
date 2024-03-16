@@ -3,6 +3,7 @@ import client, {
   databases,
   DATABASE_ID,
   COLLECTION_ID_SAVEDISSUE,
+  COLLECTION_ID_USERS,
 } from "../../config";
 import { Query } from "appwrite";
 import { Check } from "react-bootstrap-icons";
@@ -15,18 +16,24 @@ const SavedIssue = () => {
 
   useEffect(() => {
     getIssues();
+    getUser();
     const unsubscribe = client.subscribe(
       `database.${DATABASE_ID}.collections.${COLLECTION_ID_SAVEDISSUE}.documents`,
       (response) => {
         console.log("subscribe", response);
       }
-    );
+    ); 
+
     console.log("unsubscribe", unsubscribe);
     return () => {
       unsubscribe();
     };
+   
   }, [done]);
-
+    const getUser = async () => {
+      const response = await databases.listDocuments(DATABASE_ID, COLLECTION_ID_USERS);
+      console.log(response.documents[0].question_counter);
+    }
   const getIssues = async () => {
     const response = await databases.listDocuments(
       DATABASE_ID,

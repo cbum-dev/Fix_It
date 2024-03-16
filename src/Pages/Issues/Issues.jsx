@@ -1,11 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { Link } from "react-router-dom";
 import { SaveFill } from "react-bootstrap-icons";
 import { databases, DATABASE_ID, COLLECTION_ID_SAVEDISSUE } from "../../config";
 import { ID, Permission, Role } from "appwrite";
 import { useAuth } from "../../utils/AuthContext";
 const debounce = (func, delay) => {
-  // import client from "../../config";
 
   let timeoutId;
   return function (...args) {
@@ -137,14 +136,14 @@ const Issues = () => {
       fetchData(searchTerm.trim());
     }
   };
-  const handleSearchDebounced = (event) => {
+  const handleSearchDebounced = useCallback((event) => {
     if (
       event.key === "Enter" ||
       (event.keyCode === 13 && searchTerm.trim() !== "")
     ) {
       debouncedFetchOrg(searchTerm.trim(), setBio, setName);
     }
-  };
+  }, [debouncedFetchOrg, searchTerm, setBio, setName]);
   const handleLabelChange = (label) => {
     setSelectedLabel(label);
     fetchData(searchTerm, label);
@@ -222,7 +221,6 @@ const Issues = () => {
             </select>
           </div>
         ))} */}
-{/* 
         <div className="flex justify-center m-6 text-black">
           <select
             value={selectedLabel}
@@ -243,8 +241,9 @@ const Issues = () => {
             <option value="docs">Docs</option>
             <option value="funcselecttions">Functions</option>
           </select>
+        </div>
           {/* <button className="px-6 border-2 mx-2 bg-slate-300 rounded-lg ">Save</button> */}
-
+{/* 
         {label.length > 0 && (
           <div key={label[0].id} className="flex justify-center m-6 text-black">
               <select
@@ -258,9 +257,8 @@ const Issues = () => {
                   </option>
                 ))}
               </select>
-            {/* <button className="px-6 border-2 mx-2 bg-slate-300 rounded-lg ">Save</button> */}
           </div>
-        )}
+        )} */}
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
           {loading ? (
