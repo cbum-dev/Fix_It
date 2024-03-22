@@ -30,7 +30,7 @@ const Contact = () => {
         "Have questions or ideas to share? Want to discuss potential collaborations? Reach out to us via email at contact@fixitopensource.com or connect with us on Twitter and LinkedIn. We're here to support your journey into open source and look forward to hearing from you."
       
       }/>
-      <div className="bg-zinc-900 rounded-lg py-6 md:px-6 px-4 m-2 w-full">
+      <div className="bg-zinc-900 rounded-lg py-6 md:px-6 px-4 mb-2 w-full">
         <ul className="flex justify-evenly space-x-4 mt-4 ">
           <li className="mb-4">
             <a

@@ -31,16 +31,26 @@ const SavedIssue = () => {
    
   }, [done]);
     const getUser = async () => {
-      const response = await databases.listDocuments(DATABASE_ID, COLLECTION_ID_USERS);
+      const response = await databases.listDocuments(DATABASE_ID, COLLECTION_ID_USERS, [Query.equal("user", user.$id)]);
+      // console.log("hi",response.documents[0].question_counter);
+      // console.log('user.question_counter', )
       console.log(response.documents[0].question_counter);
+
     }
+    const incrementCount = async (id) => {
+      const response = await databases.updateDocument(DATABASE_ID, COLLECTION_ID_USERS, id, {
+        question_counter: user.question_counter + 1,
+      });
+      console.log(response);
+    };
+
   const getIssues = async () => {
     const response = await databases.listDocuments(
       DATABASE_ID,
       COLLECTION_ID_SAVEDISSUE,
       [Query.orderDesc("$createdAt"), Query.notEqual("isDone", true),Query.equal("users",user.$id)]
     );
-    console.log(response.documents);
+    console.log("res",response.documents);
     setSavedIssues(response.documents);
   };
   const deleteIssue = async (id) => {
@@ -116,7 +126,7 @@ const SavedIssue = () => {
                   onClick={() => updateIssue(issue.$id)}
                 >
                   <Check className="mr-2" />
-                  <p>Done</p>
+                  <p onClick={() => incrementCount(user.id)}>Done</p>
                 </button>
               </div>
             </div>

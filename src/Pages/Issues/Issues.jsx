@@ -4,8 +4,11 @@ import { SaveFill } from "react-bootstrap-icons";
 import { databases, DATABASE_ID, COLLECTION_ID_SAVEDISSUE } from "../../config";
 import { ID, Permission, Role } from "appwrite";
 import { useAuth } from "../../utils/AuthContext";
-const debounce = (func, delay) => {
+import usecalculateTimeDifference from "../../CustomHooks/useTimeDifference";
+import LoadingSkeleton from "../../Components/IssueSkeleton";
+import { extractRepoName } from "../../utils/BasicUtils";
 
+const debounce = (func, delay) => {
   let timeoutId;
   return function (...args) {
     clearTimeout(timeoutId);
@@ -13,41 +16,6 @@ const debounce = (func, delay) => {
       func.apply(this, args);
     }, delay);
   };
-};
-
-const calculateTimeDifference = (createdDate) => {
-  const currentDate = new Date();
-  const issueDate = new Date(createdDate);
-  const timeDifference = currentDate - issueDate;
-  const minutesDifference = Math.floor(timeDifference / (1000 * 60));
-  const hoursDifference = Math.floor(timeDifference / (1000 * 60 * 60));
-  const daysDifference = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
-  const monthsDifference = Math.floor(
-    timeDifference / (1000 * 60 * 60 * 24 * 30)
-  );
-  const yearsDifference = Math.floor(
-    timeDifference / (1000 * 60 * 60 * 24 * 365)
-  );
-
-  if (yearsDifference > 0) {
-    return yearsDifference === 1
-      ? "1 year ago"
-      : `${yearsDifference} years ago`;
-  } else if (monthsDifference > 0) {
-    return monthsDifference === 1
-      ? "1 month ago"
-      : `${monthsDifference} months ago`;
-  } else if (daysDifference > 0) {
-    return daysDifference === 1 ? "1 day ago" : `${daysDifference} days ago`;
-  } else if (hoursDifference > 0) {
-    return hoursDifference === 1
-      ? "1 hour ago"
-      : `${hoursDifference} hours ago`;
-  } else {
-    return minutesDifference === 1
-      ? "1 minute ago"
-      : `${minutesDifference} minutes ago`;
-  }
 };
 
 const fetchOrg = (org, setBio, setName) => {
@@ -58,51 +26,6 @@ const fetchOrg = (org, setBio, setName) => {
       setName(data.login);
     })
     .catch((error) => console.log(error));
-};
-const extractRepoName = (url) => {
-  const parts = url.split("/");
-  return parts[4];
-};
-
-const LoadingSkeleton = () => {
-  return (
-    <div className=" bg-slate-900 border-gray-300 rounded-xl h-56 animate-pulse px-2 py-2">
-      <div className="h-3/5">
-        <div className="flex justify-between">
-          <h3 className="text-lg md:text-2xl font-sans mb-2"></h3>
-          <h3 className="flex">
-            {" "}
-            <p className="" style={{ color: "grey" }}>
-              <SaveFill className="mr-2 h-6 w-5" />
-            </p>
-          </h3>
-        </div>
-
-        <p className="text-slate-200"></p>
-      </div>
-      <div className="flex justify-between ">
-        <div className="w-1/2">
-          <p
-            className="bg-slate-700 text-green-300 rounded-xl mb-2 w-3/4 px-3 text-center"
-            style={{ height: "24px", width: "70%" }}
-          ></p>
-        </div>
-        <div className="w-1/2 flex items-center justify-center">
-          <p
-            className="bg-slate-700  rounded-xl mb-2 w-full  text-center"
-            style={{ height: "24px", width: "70%" }}
-          ></p>
-        </div>
-      </div>
-      <div className="flex justify-evenly mt-3 items-center">
-        <p className="rounded-xl mt-2 mb-2 w-1/2"></p>
-        <button
-          className="border-0.5 bg-white rounded-xl animate-pul"
-          style={{ height: "36px", width: "108.333px" }}
-        ></button>
-      </div>
-    </div>
-  );
 };
 
 const Issues = () => {
@@ -136,18 +59,20 @@ const Issues = () => {
       fetchData(searchTerm.trim());
     }
   };
-  const handleSearchDebounced = useCallback((event) => {
-    if (
-      event.key === "Enter" ||
-      (event.keyCode === 13 && searchTerm.trim() !== "")
-    ) {
-      debouncedFetchOrg(searchTerm.trim(), setBio, setName);
-    }
-  }, [debouncedFetchOrg, searchTerm, setBio, setName]);
+  const handleSearchDebounced = useCallback(
+    (event) => {
+      if (
+        event.key === "Enter" ||
+        (event.keyCode === 13 && searchTerm.trim() !== "")
+      ) {
+        debouncedFetchOrg(searchTerm.trim(), setBio, setName);
+      }
+    },
+    [debouncedFetchOrg, searchTerm, setBio, setName]
+  );
   const handleLabelChange = (label) => {
     setSelectedLabel(label);
     fetchData(searchTerm, label);
-    
   };
 
   const fetchData = (org, label = selectedLabel) => {
@@ -242,8 +167,8 @@ const Issues = () => {
             <option value="funcselecttions">Functions</option>
           </select>
         </div>
-          {/* <button className="px-6 border-2 mx-2 bg-slate-300 rounded-lg ">Save</button> */}
-{/* 
+        {/* <button className="px-6 border-2 mx-2 bg-slate-300 rounded-lg ">Save</button> */}
+        {/* 
         {label.length > 0 && (
           <div key={label[0].id} className="flex justify-center m-6 text-black">
               <select
@@ -259,7 +184,6 @@ const Issues = () => {
               </select>
           </div>
         )} */}
-
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
           {loading ? (
             Array.from({ length: 6 }).map((_, index) => (
@@ -277,7 +201,10 @@ const Issues = () => {
             </div>
           ) : (
             issues.map((issue) => (
-              <div key={issue.id} className="bg-zinc-900  border border-zinc-700 rounded-xl h-60 p-4">
+              <div
+                key={issue.id}
+                className="bg-zinc-900  border border-zinc-700 rounded-xl h-60 p-4"
+              >
                 <div className="h-3/5">
                   <div className="flex justify-between">
                     <h3 className="text-lg md:text-2xl font-sans mb-2">
@@ -350,7 +277,7 @@ const Issues = () => {
                 </div>
                 <div className="flex justify-evenly mt-3 items-center">
                   <p className="rounded-xl mt-2 mb-2 w-1/2">
-                    {calculateTimeDifference(issue.created_at)}
+                    {usecalculateTimeDifference(issue.created_at)}
                   </p>
 
                   <button className="px-4  py-1.5 bg-slate-300 hover:text-slate-100 hover:bg-zinc-950 border border-zinc-800  duration-200 text-black rounded-xl border-0.5">

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+// import Typewriter from "../../Components/TypeWriter";
 function Dashboard() {
   
   const [count, setCount] = useState(0);

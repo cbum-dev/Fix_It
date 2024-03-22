@@ -1,4 +1,5 @@
 import Dashboard from "../../Components/Dashboard"
+
 function Team() {
   return (
     <div className="text-white">
