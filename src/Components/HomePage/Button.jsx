@@ -1,9 +1,7 @@
-import { Link } from 'react-router-dom'; 
-import { StopCircle, StarFill } from "react-bootstrap-icons";
+import { Link } from "react-router-dom";
 
 const CustomButton = ({ Icon, linkTo, externalLink, children }) => {
-  const ButtonComponent = externalLink ? 'a' : Link;
-  console.log(Icon)
+  const ButtonComponent = externalLink ? "a" : Link;
 
   return (
     <ButtonComponent
