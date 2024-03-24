@@ -23,7 +23,7 @@ const Footer = () => {
           {/* <h1 className=" text-center items-center text-5xl md:text-8xl object-cover w-full"> Fix It </h1> */}
           <div className="flex items-center justify-center  cursor:pointer">
         
-        <h1 className="text-8xl  font-extrabold  text-white">FIX IT</h1>
+        <h1 className="md:text-6xl text-3xl  font-extrabold  text-white">FIX IT</h1>
         {/* <h1>B</h1> */}
       </div>
         </div>

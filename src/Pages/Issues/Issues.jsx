@@ -7,7 +7,9 @@ import { useAuth } from "../../utils/AuthContext";
 import usecalculateTimeDifference from "../../CustomHooks/useTimeDifference";
 import LoadingSkeleton from "../../Components/IssueSkeleton";
 import { extractRepoName } from "../../utils/BasicUtils";
-
+import IssueApis from "../../api/IssueApis";
+import fetchLabels from "../../api/IssueApis";
+import IssueComponent from "../../Components/IssuePage/IssueCard";
 const debounce = (func, delay) => {
   let timeoutId;
   return function (...args) {
@@ -37,6 +39,7 @@ const Issues = () => {
   const [bio, setBio] = useState("");
   const [name, setName] = useState("");
   const [label, setLabel] = useState([]);
+  // const { label, issues, orgDetails, fetchIssues, fetchLabels, fetchOrgDetails } = IssueApis();
 
   const debouncedFetchOrg = debounce(fetchOrg, 500);
   const { user } = useAuth();
@@ -125,7 +128,6 @@ const Issues = () => {
         {bio === ""
           ? "appwrite : End to end backend server for frontend and mobile developers. 👩‍💻👨‍💻"
           : `${name} : ${bio}`}
-        {/* {name} : {bio} */}
       </h1>
       <div className="bg-inherit text-white w-full">
         <div className="flex justify-center mt-4 m-6 text-black">
@@ -137,15 +139,8 @@ const Issues = () => {
             onKeyPress={handleSearch}
             className="px-4 w-11/12 py-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300 bg-slate-200"
           />
-          {/* <button className="px-2.5 border-2 mx-2 bg-slate-300 rounded-lg ">Save Organzation</button> */}
         </div>
-        {/* {label.map((label) => (
-          <div key={label.id} className="flex justify-center m-6 text-black">
-            <select name="label" id="">
-              <option value={label.name}>{label.name}</option>
-            </select>
-          </div>
-        ))} */}
+
         <div className="flex justify-center m-6 text-black">
           <select
             value={selectedLabel}
@@ -167,23 +162,6 @@ const Issues = () => {
             <option value="funcselecttions">Functions</option>
           </select>
         </div>
-        {/* <button className="px-6 border-2 mx-2 bg-slate-300 rounded-lg ">Save</button> */}
-        {/* 
-        {label.length > 0 && (
-          <div key={label[0].id} className="flex justify-center m-6 text-black">
-              <select
-                value={selectedLabel}
-                onChange={(e) => handleLabelChange(e.target.value)}
-                className="px-4 w-11/12 py-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300 bg-slate-200"
-              >
-                {label.map((label) => (
-                  <option key={label.id} value={label.name}>
-                    {label.name}
-                  </option>
-                ))}
-              </select>
-          </div>
-        )} */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
           {loading ? (
             Array.from({ length: 6 }).map((_, index) => (
@@ -201,96 +179,12 @@ const Issues = () => {
             </div>
           ) : (
             issues.map((issue) => (
-              <div
+              <IssueComponent
                 key={issue.id}
-                className="bg-zinc-900  border border-zinc-700 rounded-xl h-60 p-4"
-              >
-                <div className="h-3/5">
-                  <div className="flex justify-between">
-                    <h3 className="text-lg md:text-2xl font-sans mb-2">
-                      # {issue.number}
-                    </h3>
-                    <h3 className="flex">
-                      {" "}
-                      <p
-                        className=""
-                        style={{
-                          color:
-                            Object.keys(issue.assignees).length === 0
-                              ? "lime"
-                              : "yellow",
-                        }}
-                      >
-                        {Object.keys(issue.assignees).length === 0
-                          ? "<Not Assigned>"
-                          : "<Assigned>"}
-                      </p>
-                      <button
-                        onClick={async () => {
-                          const permissions = [
-                            Permission.write(Role.user(user.$id)),
-                          ];
-                          const payload = {
-                            users: user.$id,
-                            name: issue.title,
-                            url: issue.html_url,
-                            org: issue.url.split("/")[4],
-                            repo: issue.url.split("/")[5],
-                          };
-                          const response = await databases.createDocument(
-                            DATABASE_ID,
-                            COLLECTION_ID_SAVEDISSUE,
-                            ID.unique(),
-                            payload,
-                            permissions
-                          );
-                          // alert("Issue Saved");
-
-                          // console.log(user.$id, "  ", user),
-                          console.log("RESPONSE:", response);
-                        }}
-                        className="flex hover:text-blue-600"
-                      >
-                        <p className="px-2">
-                          {user ? "Save" : "Login To Save"}
-                        </p>{" "}
-                        <SaveFill className="mr-2 h-6 w-5" />
-                      </button>
-                    </h3>
-                  </div>
-
-                  <p className="text-slate-200">
-                    [{issue.title.split(" ").slice(0, 20).join(" ")} ...]
-                  </p>
-                </div>
-                <div className="flex justify-between ">
-                  <div className="w-1/2">
-                    <p className="bg-slate-700 border border-zinc-600 text-green-500 rounded-xl mb-2 w-3/4 px-3 text-center">
-                      {issue.url.split("/")[4]}
-                    </p>
-                  </div>
-                  <div className="w-1/2 flex items-center justify-center">
-                    <p className="bg-slate-700 border border-zinc-600 text-green-400 rounded-xl mb-2 w-full  text-center">
-                      {extractRepoName(issue.html_url)}
-                    </p>
-                  </div>
-                </div>
-                <div className="flex justify-evenly mt-3 items-center">
-                  <p className="rounded-xl mt-2 mb-2 w-1/2">
-                    {usecalculateTimeDifference(issue.created_at)}
-                  </p>
-
-                  <button className="px-4  py-1.5 bg-slate-300 hover:text-slate-100 hover:bg-zinc-950 border border-zinc-800  duration-200 text-black rounded-xl border-0.5">
-                    <Link
-                      to={issue.html_url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      View Issue
-                    </Link>
-                  </button>
-                </div>
-              </div>
+                issue={issue}
+                usecalculateTimeDifference={usecalculateTimeDifference}
+                extractRepoName={extractRepoName}
+              />
             ))
           )}
         </div>

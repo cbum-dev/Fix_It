@@ -1,5 +1,4 @@
 import { StopCircle, StarFill } from "react-bootstrap-icons";
-import { Link } from "react-router-dom";
 import CustomButton from "../../Components/HomePage/Button";
 import GithubButton from "../../Components/HomePage/GithubButton";
 const Hero = () => {

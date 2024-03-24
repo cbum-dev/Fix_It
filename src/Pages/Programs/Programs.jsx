@@ -1437,29 +1437,28 @@ const ProjectCard = ({ project }) => (
           </li>
         ))}
       </ul>
-      </div>
-      <div className="flex h-12 justify-evenly items-center bg-slate-600">
-        <a
-          href={project.url} // Replace placeholder URL with the actual project URL
-          target="_blank"
-          rel="noopener noreferrer"
-          className=" block text-blue-400 font-semibold hover:text-white hover:underline"
-        >
-          Visit Website
-        </a>
-        <a
-          href={`https://github.com/${project.name
-            .split(" ")
-            .slice(0, 1)
-            .join("")}`}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="block text-blue-400 font-semibold hover:text-white hover:underline"
-        >
-          Visit Repository
-        </a>
-      </div>
-
+    </div>
+    <div className="flex h-12 justify-evenly items-center bg-slate-600">
+      <a
+        href={project.url} // Replace placeholder URL with the actual project URL
+        target="_blank"
+        rel="noopener noreferrer"
+        className=" block text-blue-400 font-semibold hover:text-white hover:underline"
+      >
+        Visit Website
+      </a>
+      <a
+        href={`https://github.com/${project.name
+          .split(" ")
+          .slice(0, 1)
+          .join("")}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="block text-blue-400 font-semibold hover:text-white hover:underline"
+      >
+        Visit Repository
+      </a>
+    </div>
   </div>
 );
 
@@ -1513,7 +1512,7 @@ const Programs = () => {
       >
         Search
       </button>
-              <ProjectList projects={projects} visibleProjects={visibleProjects} />
+      <ProjectList projects={projects} visibleProjects={visibleProjects} />
 
       {visibleProjects.length < projects.length && (
         <button
