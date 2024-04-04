@@ -2,8 +2,10 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { ChevronDown, ChevronUp } from "react-feather";
 import { useAuth } from "../utils/AuthContext";
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
+  const totalCount = useSelector(state => state.count.value);
   const [menuOpen, setMenuOpen] = useState(false);
   const { user, handleLogout } = useAuth();
   const location = useLocation();
@@ -28,7 +30,7 @@ const Navbar = () => {
             <h1 className="text-white">FIX IT</h1>
           </div>
         </Link>
-
+        <span>Total Issues: {totalCount}</span>
         <div className="flex md:hidden relative">
           <div className="relative inline-block text-left">
             <button onClick={toggleMenu} className="text-white">

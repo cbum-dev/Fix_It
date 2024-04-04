@@ -83,26 +83,50 @@ const Issues = () => {
     setError(null);
 
     setTimeout(() => {
-      fetch(
-        `https://api.github.com/search/issues?q=is:open is:issue org:${org} label:"${label}"`
-      )
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error("Network response was not ok");
-          }
-          return response.json();
-        })
-        .then((data) => {
-          setIssues(data.items);
-        })
-        .catch((error) => {
-          setError(error.message);
-        })
-        .finally(() => {
-          setLoading(false);
-        });
+      if(label === ""){
+        fetch(
+          `https://api.github.com/search/issues?q=is:open is:issue org:${org}`
+        )
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error("Network response was not ok");
+            }
+            return response.json();
+          })
+          .then((data) => {
+            setIssues(data.items);
+          })
+          .catch((error) => {
+            setError(error.message);
+          })
+          .finally(() => {
+            setLoading(false);
+          });
+
+      }
+      else{
+        fetch(
+          `https://api.github.com/search/issues?q=is:open is:issue org:${org} label:"${label}"`
+        )
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error("Network response was not ok");
+            }
+            return response.json();
+          })
+          .then((data) => {
+            setIssues(data.items);
+          })
+          .catch((error) => {
+            setError(error.message);
+          })
+          .finally(() => {
+            setLoading(false);
+          });
+      }
     }, 500);
-  };
+  }
+
 
   useEffect(() => {
     fetchData("appwrite");
@@ -120,6 +144,8 @@ const Issues = () => {
       <h1 className="text-3xl md:text-6xl lg:text-7xl text-white ">
         {selectedLabel === "good first issue"
           ? "Good First Issues For You"
+          :selectedLabel === ""
+          ? "All Issues"
           : selectedLabel.toLowerCase() === "hacktoberfest"
           ? "Hacktoberfest Issues For You"
           : `Issues Labeled "${selectedLabel}"`}
@@ -147,6 +173,7 @@ const Issues = () => {
             onChange={(e) => handleLabelChange(e.target.value)}
             className="px-4 w-11/12 py-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300 bg-slate-200"
           >
+            <option value="">All Issues</option>
             <option value="good first issue">Good First Issue</option>
             <option className="text-l text-gray-500" value="hacktoberfest">
               Hacktober Fest
@@ -159,7 +186,7 @@ const Issues = () => {
             <option value="cloud">Cloud</option>
             <option value="console">Console</option>
             <option value="docs">Docs</option>
-            <option value="funcselecttions">Functions</option>
+            <option value="functions">Functions</option>
           </select>
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
