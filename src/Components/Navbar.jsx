@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { ChevronDown, ChevronUp } from "react-feather";
-import { useAuth } from "../utils/AuthContext";
+import { useAuth } from "../utils/AuthContext"; // Corrected import
 import { useSelector } from "react-redux";
 
 const Navbar = () => {
   const totalCount = useSelector(state => state.count.value);
   const [menuOpen, setMenuOpen] = useState(false);
-  const { user, handleLogout } = useAuth();
+  const { user, handleLogout } = useAuth(); // Corrected usage
   const location = useLocation();
 
   const toggleMenu = () => {

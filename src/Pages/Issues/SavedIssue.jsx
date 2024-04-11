@@ -61,8 +61,6 @@ const SavedIssue = () => {
     );
     console.log("res",response.documents);
     setCount(23);
-
-
     setSavedIssues(response.documents);
   };
   const deleteIssue = async (id) => {
