@@ -1,13 +1,11 @@
 import { StopCircle, StarFill } from "react-bootstrap-icons";
 import CustomButton from "../../Components/HomePage/Button";
 import GithubButton from "../../Components/HomePage/GithubButton";
-import {useSelector} from "react-redux";
 const Hero = () => {
-  const totalCount = useSelector(state => state.count.value);
   return (
     <div className="bg-black flex flex-col justify-center h-screen items-center text-white py-10">
       <h1 className="text-5xl text-slate-200 text-center md:text-7xl font-sans font-extrabold mb-4">
-        The Github Issue Controller 
+        The Github Issue Controller
       </h1>
       <h1 className="text-lg text-center md:text-xl font-sans text-gray-400 mb-4">
         Struggling to pinpoint the ideal repository or address an issue

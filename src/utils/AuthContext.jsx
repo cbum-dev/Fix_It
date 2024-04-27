@@ -1,16 +1,14 @@
 import { createContext, useState, useEffect, useContext} from "react";
 import { COLLECTION_ID_USERS, DATABASE_ID, account, databases } from "../config";
-import { useDispatch, useSelector } from 'react-redux';
-import { setUser } from "../store/Slicer/authSlice";
 import { useNavigate } from "react-router";
 import { ID} from 'appwrite';
 
 const AuthContext = createContext()
 
 export const AuthProvider = ({children}) => {
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
-    const { user, loading } = useSelector((state) => state.auth);
+    const [loading, setLoading] = useState(true)
+    const [user, setUser] = useState(null)
+    const navigate = useNavigate()
 
     useEffect(() => {
         getUserOnLoad()
@@ -19,11 +17,12 @@ export const AuthProvider = ({children}) => {
     const getUserOnLoad = async () => {
         try{
             let accountDetails = await account.get();
-            dispatch(setUser(accountDetails))
+            setUser(accountDetails)
         }catch(error){
             console.error(error)
             
         }
+        setLoading(false)
     }
 
     const handleUserLogin = async (e, credentials) => {
@@ -33,7 +32,7 @@ export const AuthProvider = ({children}) => {
         try{
             let response = await account.createEmailSession(credentials.email, credentials.password)
             let accountDetails = await account.get();
-            dispatch(setUser(accountDetails))
+            setUser(accountDetails)
             navigate('/')
         }catch(error){
             console.error(error)
@@ -42,7 +41,7 @@ export const AuthProvider = ({children}) => {
 
     const handleLogout = async () => {
         const response = await account.deleteSession('current');
-        dispatch(logout())
+        setUser(null)
         navigate('/')
     }
 
@@ -72,13 +71,27 @@ export const AuthProvider = ({children}) => {
                 );
             await account.createEmailSession(credentials.email, credentials.password1)
             let accountDetails = await account.get();
-            dispatch(setUser(accountDetails))
+            setUser(accountDetails)
             navigate('/')
         }catch(error){
             console.error(error)
         }
     }
-    return loading ? <p className="text-white">Loading...</p> : children;
+
+    const contextData = {
+        user,
+        handleUserLogin,
+        handleLogout,
+        handleRegister
+    }
+
+    return(
+        <AuthContext.Provider value={contextData}>
+            {loading ? <p className="text-white">Loading...</p> : children}
+        </AuthContext.Provider>
+    )
 }
+
+export const useAuth = () => {return useContext(AuthContext)}
 
 export default AuthContext;

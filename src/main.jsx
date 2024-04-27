@@ -11,21 +11,17 @@ import Login from "./Auth/Login.jsx";
 import Registration from "./Auth/Register.jsx";
 import SavedIssue from "./Pages/Issues/SavedIssue.jsx";
 import Team from "./Pages/Team/Team.jsx";
-import People from "./Pages/Team/People.jsx";
 import Dashboard from "./Pages/HomePage/Dashboard.jsx";
-// import { AuthProvider } from "./utils/AuthContext.jsx";
+import { AuthProvider } from "./utils/AuthContext.jsx";
 import {BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./index.css";
-import { Provider } from "react-redux";
-import { store } from "./store/store.js";
+
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <Provider store={store}>
   <Router>
-    {/* <AuthProvider> */}
+    <AuthProvider>
     <React.StrictMode>
       <Navbar />
       <Routes>
-        <Route path="/team/people" element={<People />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/team" element={<Team />} />
         <Route path="/login" element={<Login />} />
@@ -39,8 +35,6 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       </Routes>
       <Footer />
     </React.StrictMode>
-    {/* </AuthProvider> */}
+    </AuthProvider>
   </Router>
-
-  </Provider>
-  );
+);

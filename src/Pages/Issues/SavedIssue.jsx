@@ -8,19 +8,15 @@ import client, {
 import { Query } from "appwrite";
 import { Check } from "react-bootstrap-icons";
 import { useAuth } from "../../utils/AuthContext";
-
-
 const SavedIssue = () => {
   const [savedIssues, setSavedIssues] = useState([]);
   const { user } = useAuth();
   const [done, setDone] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [count, setCount] = useState(0);
+
   useEffect(() => {
     getIssues();
     getUser();
-    getUsers();
-    console.log("count", count);
     const unsubscribe = client.subscribe(
       `database.${DATABASE_ID}.collections.${COLLECTION_ID_SAVEDISSUE}.documents`,
       (response) => {
@@ -48,11 +44,6 @@ const SavedIssue = () => {
       console.log(response);
     };
 
-  const getUsers = async () => {
-    const response = await databases.listDocuments(DATABASE_ID, COLLECTION_ID_USERS, [Query.limit(25)]);
-    console.log("ressdsd",response.documents);
-  };
-
   const getIssues = async () => {
     const response = await databases.listDocuments(
       DATABASE_ID,
@@ -60,7 +51,6 @@ const SavedIssue = () => {
       [Query.orderDesc("$createdAt"), Query.notEqual("isDone", true),Query.equal("users",user.$id)]
     );
     console.log("res",response.documents);
-    setCount(23);
     setSavedIssues(response.documents);
   };
   const deleteIssue = async (id) => {
