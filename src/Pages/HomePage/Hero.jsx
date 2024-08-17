@@ -3,9 +3,9 @@ import CustomButton from "../../Components/HomePage/Button";
 import GithubButton from "../../Components/HomePage/GithubButton";
 const Hero = () => {
   return (
-    <div className="bg-black px-32 max-w-7xl mx-auto relative flex flex-col justify-center h-screen items-center  text-white py-10">
-      <div className="relative  p-4 z-0">
-        <h1 className="text-5xl w-full text-slate-200  text-center md:text-7xl bg-black p-4 border border-1 z-10 border-neutral-700 font-sans font-extrabold ">
+    <div className="bg-black md:px-32 max-w-7xl mx-auto relative flex flex-col justify-center h-screen items-center  text-white py-10">
+      <div className="relative  md:p-4 z-0">
+        <h1 className="text-4xl w-full text-slate-200  text-center md:text-7xl bg-black p-4 border border-1 z-10 border-neutral-700 font-sans font-extrabold ">
           The Github Issue Controller
         </h1>
         <div className="border border-1 border-neutral-700 h-20 w-20  rounded-full absolute -top-6 -right-6">
@@ -25,7 +25,7 @@ const Hero = () => {
           </div>
         </div>
         <div className="w-full border flex justify-center border-t-0 border-1 border-neutral-700 ">
-          <div className="px-6 w-1/2  border border-1 border-neutral-700 border-t-0  flex flex-col md:flex-row gap-10  md:justify-center ">
+          <div className="px-6 md:w-1/2  border border-1 border-neutral-700 border-t-0  flex flex-col md:flex-row md:gap-10  md:justify-center ">
             <CustomButton Icon={StopCircle} linkTo="/issues">
               Issues
             </CustomButton>
