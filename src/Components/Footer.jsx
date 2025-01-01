@@ -3,7 +3,7 @@ import { Instagram, Linkedin, Twitter, CcCircle } from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
 const Footer = () => {
   return (
-    <footer className="bg-gray-950 text-white py-4 border-2 border-slate-800 rounded-xl">
+    <footer className="bg-black text-white py-4 border-t border-slate-800 ">
       <div className="container mx-auto flex justify-between">
         <div className="w-1/3 flex flex-col justify-evenly">
           <button className="flex items-center bg-inherit text-white px-2 py-2 rounded-md ">
