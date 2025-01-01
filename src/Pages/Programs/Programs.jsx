@@ -1421,29 +1421,29 @@ const projects = [
 ];
 
 const ProjectCard = ({ project }) => (
-  <div className="w-full mx-auto text-center bg-slate-300 rounded-xl shadow-md overflow-hidden m-4 md:max-w-2xl">
+  <div className="w-full mx-auto text-center bg-neutral-950 rounded-xl shadow-md overflow-hidden m-4 md:max-w-2xl">
     <img
-      className="bg-gray-600 text-white text-xl md:text-4xl underline object-contain py-2 object-center w-full h-20"
+      className="bg-neutral-900 text-white text-xl md:text-4xl underline object-contain py-2 object-center w-full h-20"
       src={project.image_url}
       alt={project.name}
     />
-    <div className="p-4">
-      <h2 className="font-bold text-xl mb-2">{project.name}</h2>
-      <p className="text-gray-600">{project.description}</p>
+    <div className="p-4 text-gray-100">
+      <h2 className="font-bold  text-xl mb-2">{project.name}</h2>
+      <p className="text-gray-200">{project.description}</p>
       <ul className="mt-4">
         {project.technologies.map((topic, index) => (
-          <li key={index} className="text-sm text-gray-600">
+          <li key={index} className="text-sm text-gray-100">
             {topic}
           </li>
         ))}
       </ul>
     </div>
-    <div className="flex h-12 justify-evenly items-center bg-slate-600">
+    <div className="flex h-12 justify-evenly items-center bg-neutral-900">
       <a
         href={project.url} // Replace placeholder URL with the actual project URL
         target="_blank"
         rel="noopener noreferrer"
-        className=" block text-blue-400 font-semibold hover:text-white hover:underline"
+        className=" block text-neutral-200 font-semibold hover:text-white hover:underline"
       >
         Visit Website
       </a>
@@ -1454,7 +1454,7 @@ const ProjectCard = ({ project }) => (
           .join("")}`}
         target="_blank"
         rel="noopener noreferrer"
-        className="block text-blue-400 font-semibold hover:text-white hover:underline"
+        className="block text-neutral-200 font-semibold hover:text-white hover:underline"
       >
         Visit Repository
       </a>
@@ -1508,7 +1508,7 @@ const Programs = () => {
       />
       <button
         onClick={filterProjects}
-        className="m-4 bg-blue-500 text-white py-2 px-4 hover:bg-blue-900 rounded-full"
+        className="m-4 bg-neutral-800 text-white py-2 px-4 hover:bg-neutral-900 rounded-xl"
       >
         Search
       </button>

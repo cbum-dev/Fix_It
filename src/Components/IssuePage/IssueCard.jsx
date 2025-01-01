@@ -9,7 +9,7 @@ const IssueComponent = ({ issue, usecalculateTimeDifference, extractRepoName }) 
     const { user } = useAuth();
 
     return (
-        <div className="bg-zinc-900 border border-zinc-700 rounded-xl h-60 p-4">
+        <div className="bg-neutral-950 border border-zinc-800 rounded-xl h-60 p-4">
             <div className="h-3/5">
                 <div className="flex justify-between">
                     <h3 className="text-lg md:text-2xl font-sans mb-2">
@@ -27,8 +27,8 @@ const IssueComponent = ({ issue, usecalculateTimeDifference, extractRepoName }) 
                             }}
                         >
                             {Object.keys(issue.assignees).length === 0
-                                ? "<Not Assigned>"
-                                : "<Assigned>"}
+                                ? "Not Assigned"
+                                : "Assigned"}
                         </p>
                         <button
                             onClick={async () => {
@@ -70,12 +70,12 @@ const IssueComponent = ({ issue, usecalculateTimeDifference, extractRepoName }) 
             </div>
             <div className="flex justify-between ">
                 <div className="w-1/2">
-                    <p className="bg-slate-700 border border-zinc-600 text-green-500 rounded-xl mb-2 w-3/4 px-3 text-center">
+                    <p className="bg-neutral-900 border border-zinc-900 text-gray-300 rounded-xl mb-2 w-3/4 px-3 text-center">
                         {issue.url.split("/")[4]}
                     </p>
                 </div>
                 <div className="w-1/2 flex items-center justify-center">
-                    <p className="bg-slate-700 border border-zinc-600 text-green-400 rounded-xl mb-2 w-full  text-center">
+                    <p className="bg-neutral-900 border border-zinc-900 text-gray-300 rounded-xl mb-2 w-full  text-center">
                         {extractRepoName(issue.html_url)}
                     </p>
                 </div>
@@ -85,7 +85,7 @@ const IssueComponent = ({ issue, usecalculateTimeDifference, extractRepoName }) 
                     {usecalculateTimeDifference(issue.created_at)}
                 </p>
 
-                <button className="px-4  py-1.5 bg-slate-300 hover:text-slate-100 hover:bg-zinc-950 border border-zinc-800  duration-200 text-black rounded-xl border-0.5">
+                <button className="px-4  py-1.5 bg-neutral-700 hover:text-slate-100 hover:bg-zinc-900    duration-200 text-white rounded-xl border-0.5">
                     <Link
                         to={issue.html_url}
                         target="_blank"
